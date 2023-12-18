@@ -35,9 +35,9 @@ RectTransform:
   m_Father: {fileID: 1537268148}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -145}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1639746
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickRotateMode
         m_Mode: 1
@@ -248,9 +248,9 @@ RectTransform:
   m_Father: {fileID: 1537268148}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -340}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &863683932
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: OnClickOkay
         m_Mode: 1
@@ -529,9 +529,9 @@ RectTransform:
   m_Father: {fileID: 1537268148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -45}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2005724420
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveMode
         m_Mode: 1
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMinus5
         m_Mode: 1
@@ -795,9 +795,9 @@ RectTransform:
   m_Father: {fileID: 5493465411598526874}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -281.66666}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6315254333839361081
@@ -877,10 +877,10 @@ RectTransform:
   m_Father: {fileID: 7509174309921598011}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32.5, y: -266.6667}
+  m_SizeDelta: {x: 55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8638841113201832480
 CanvasRenderer:
@@ -957,9 +957,9 @@ RectTransform:
   m_Father: {fileID: 5493465411598526874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -15}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3675535087451785152
@@ -1039,10 +1039,10 @@ RectTransform:
   m_Father: {fileID: 7509174309921598011}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32.5, y: -333.33334}
+  m_SizeDelta: {x: 55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &114249893507843581
 CanvasRenderer:
@@ -1119,10 +1119,10 @@ RectTransform:
   m_Father: {fileID: 7509174309921598011}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32.5, y: -200.00002}
+  m_SizeDelta: {x: 55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4950564510269065930
 CanvasRenderer:
@@ -1517,9 +1517,9 @@ RectTransform:
   m_Father: {fileID: 5493465411598526874}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -348.3333}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7696709644279514828
@@ -1604,10 +1604,10 @@ RectTransform:
   m_Father: {fileID: 7670217962590878546}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 225, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 230.32, y: -200}
+  m_SizeDelta: {x: 225, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9205823992513839221
 MonoBehaviour:
@@ -1722,14 +1722,13 @@ GameObject:
   - component: {fileID: 6969764728204264276}
   - component: {fileID: 2977424584147027332}
   - component: {fileID: 8623403506698282318}
-  - component: {fileID: 2967256481706473019}
   m_Layer: 5
   m_Name: ControlPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6969764728204264276
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1795,25 +1794,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2967256481706473019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855224454889659737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c07b97883b0734021b49aae3e54bf053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feedbackPanel: {fileID: 9194632906429005656}
-  confirmButton: {fileID: 6823769098287383298}
-  scaleField: {fileID: 8696436003381815126}
-  moveAndRotatePanel: {fileID: 2360757263978587287}
-  scalingPanel: {fileID: 5929107153137744533}
-  modeTitle: {fileID: 2290487139325351697}
-  isLocal: 0
 --- !u!1 &1953035193526304240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 20f7357e1eb80464c8d58421e0865db4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ba37a560c95abc458b486d75d54a27c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2268,7 +2248,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveAxis
         m_Mode: 3
@@ -2482,7 +2462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveAxis
         m_Mode: 3
@@ -2578,10 +2558,10 @@ RectTransform:
   m_Father: {fileID: 9108794248377108273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60.75}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 23.91, y: -30.375}
+  m_SizeDelta: {x: 47.82, y: 60.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5592437861740461060
 CanvasRenderer:
@@ -2664,10 +2644,10 @@ RectTransform:
   m_Father: {fileID: 7509174309921598011}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32.5, y: 0}
+  m_SizeDelta: {x: 55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &325699555977110071
 CanvasRenderer:
@@ -2913,7 +2893,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveAxis
         m_Mode: 3
@@ -3047,7 +3027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickPlus1
         m_Mode: 1
@@ -3181,7 +3161,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickOkay
         m_Mode: 1
@@ -3302,9 +3282,9 @@ RectTransform:
   m_Father: {fileID: 5493465411598526874}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -215}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2564615665098300603
@@ -3472,7 +3452,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8353682581791327123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SizeController, Assembly-CSharp
         m_MethodName: OnClickClose
         m_Mode: 1
@@ -3517,10 +3497,10 @@ RectTransform:
   m_Father: {fileID: 7509174309921598011}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32.5, y: -133.33334}
+  m_SizeDelta: {x: 55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4788551408928270848
 CanvasRenderer:
@@ -3686,7 +3666,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickScaleButton
         m_Mode: 3
@@ -3820,7 +3800,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveAxis
         m_Mode: 3
@@ -3982,9 +3962,9 @@ RectTransform:
   m_Father: {fileID: 5493465411598526874}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -81.666664}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6768579903835304381
@@ -4043,7 +4023,6 @@ GameObject:
   - component: {fileID: 8939711862986227803}
   - component: {fileID: 3899954707061020809}
   - component: {fileID: 7208270590471953727}
-  - component: {fileID: 9194632906429005656}
   m_Layer: 5
   m_Name: FeedbackPanel
   m_TagString: Untagged
@@ -4138,24 +4117,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &9194632906429005656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5679033150165588414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee591e118f0fc2e4f820ec9d20a52c61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movedValueX: {fileID: 3289408166065841493}
-  movedValueY: {fileID: 3720451375642266776}
-  movedValueZ: {fileID: 5036486316684686366}
-  rotatedValueX: {fileID: 520956244107243686}
-  rotatedValueY: {fileID: 7650048101886269333}
-  rotatedValueZ: {fileID: 5576880884779268533}
 --- !u!1 &5929107153137744533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,9 +4279,9 @@ RectTransform:
   m_Father: {fileID: 5493465411598526874}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -148.33333}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3701302270920569913
@@ -4384,7 +4345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1314730349622425517
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4727,7 +4688,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveAxis
         m_Mode: 3
@@ -4772,10 +4733,10 @@ RectTransform:
   m_Father: {fileID: 9108794248377108273}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 41}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 23.91, y: -220.375}
+  m_SizeDelta: {x: 47.82, y: 41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5547084968665431561
 CanvasRenderer:
@@ -4949,10 +4910,10 @@ RectTransform:
   m_Father: {fileID: 7670217962590878546}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 87.82, y: -200}
+  m_SizeDelta: {x: 60, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4816104202111207097
 MonoBehaviour:
@@ -5013,10 +4974,10 @@ RectTransform:
   m_Father: {fileID: 7509174309921598011}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 32.5, y: -66.66667}
+  m_SizeDelta: {x: 55, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7888161014063305951
 CanvasRenderer:
@@ -5264,7 +5225,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMinus1
         m_Mode: 1
@@ -5398,7 +5359,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickPlus5
         m_Mode: 1
@@ -5480,7 +5441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f1ae8c1b83d94419b59c0b63890aceb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be758b5ac9837cf459ec69341b91026c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5585,9 +5546,9 @@ RectTransform:
   m_Father: {fileID: 1537268148}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -245}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3771198740052930082
@@ -5874,7 +5835,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickScaleButton
         m_Mode: 3
@@ -6008,7 +5969,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickMoveAxis
         m_Mode: 3
@@ -6302,7 +6263,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967256481706473019}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MovePanel, Assembly-CSharp
         m_MethodName: OnClickScaleButton
         m_Mode: 3
@@ -6382,7 +6343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6c411504a8c1e40c4aa19423033e6dd2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be758b5ac9837cf459ec69341b91026c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6436,7 +6397,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8353682581791327123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SizeController, Assembly-CSharp
         m_MethodName: MoveObject
         m_Mode: 1
@@ -6516,7 +6477,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f1ae8c1b83d94419b59c0b63890aceb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be758b5ac9837cf459ec69341b91026c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6570,7 +6531,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8353682581791327123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SizeController, Assembly-CSharp
         m_MethodName: SizeScalingObject
         m_Mode: 1
@@ -6650,7 +6611,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f1ae8c1b83d94419b59c0b63890aceb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be758b5ac9837cf459ec69341b91026c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6704,7 +6665,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8353682581791327123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SizeController, Assembly-CSharp
         m_MethodName: RotateObject
         m_Mode: 1
@@ -6838,7 +6799,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8353682581791327123}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SizeController, Assembly-CSharp
         m_MethodName: ConfirmChanged
         m_Mode: 1
@@ -6859,7 +6820,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8353682581791327120}
-  - component: {fileID: 8353682581791327123}
   - component: {fileID: 4792505927790708809}
   m_Layer: 5
   m_Name: PRSController
@@ -6890,20 +6850,6 @@ RectTransform:
   m_AnchoredPosition: {x: 156.67023, y: 0}
   m_SizeDelta: {x: 713.3405, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8353682581791327123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8353682581791327121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860ecb0b5438b42b7b725f0c9594fbb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectModeButtons: {fileID: 5960153962215904376}
-  controlPanel: {fileID: 2967256481706473019}
 --- !u!222 &4792505927790708809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7406,10 +7352,10 @@ RectTransform:
   m_Father: {fileID: 7670217962590878546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 47.82, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 33.91, y: -200}
+  m_SizeDelta: {x: 47.82, y: 380}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4033870244036623374
 MonoBehaviour:
