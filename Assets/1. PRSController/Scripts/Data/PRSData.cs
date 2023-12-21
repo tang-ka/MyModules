@@ -8,5 +8,10 @@ namespace PRSController
     {
         public Transform TargetObject { get; set; }
         public float DifferentialInterval { get; set; }
+
+        public PRSData(float interval = 0.05f)
+        {
+            DifferentialInterval = interval;
+        }
     }
 }

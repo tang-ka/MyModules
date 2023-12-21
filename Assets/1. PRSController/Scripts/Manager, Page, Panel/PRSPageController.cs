@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace PRSController
     
     public enum PageState
     {
+        None = -1,
         ModeSelect,
         Contorol
     }
@@ -18,14 +20,26 @@ namespace PRSController
     public class PRSPageController : MonoBehaviour
     {
         #region Members
-        [SerializeField]
-        Page[] pages;
+        [SerializeField] Page[] pages;
+        [SerializeField] PRSData data = new PRSData();
+        [SerializeField] PageState pageState;
+        public PageState PageState 
+        { 
+            get => pageState; 
+            set
+            {
+                if (value == PageState.None)
+                {
+                    PRSControllerManager.Instance.Close();
+                    return;
+                }
 
-        PRSData data;
+                pageState = value;
+                OpenPage(value);
+            }
+        }
 
-        PageState pageState;
-
-        bool isInit = false;
+        [SerializeField] bool isInit = false;
         #endregion
 
         #region Mono
@@ -34,29 +48,37 @@ namespace PRSController
             Init();
         }
 
+        private void OnDestroy()
+        {
+            DeInit();
+        }
+
         private void OnEnable()
         {
-
+            OpenSetting();
         }
 
         private void OnDisable()
         {
-
+            
         }
         #endregion
 
-        public void Open()
+        public void OpenSetting()
         {
-            if (!isInit) Init();
+            if (!isInit) 
+                Init();
 
-            
+            pageState = PageState.ModeSelect;
         }
 
-        public void Close()
+        public void CloseSetting()
         {
-
+            data = null;
         }
 
+
+        // 최초 한번만 설정하면 그 이후에는 설정 할 필요가 없는 설정들
         private void Init()
         {
             pages = new Page[transform.childCount];
@@ -64,8 +86,6 @@ namespace PRSController
             {
                 pages[i] = transform.GetChild(i).GetComponent<Page>();
             }
-
-            data.DifferentialInterval = 0.05f;
 
             isInit = true;
         }

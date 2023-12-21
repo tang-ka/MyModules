@@ -33,7 +33,7 @@ namespace Lean.Touch
 
 		private const int DEFAULT_GUI_LAYERS = 1 << 5;
 
-		private const float DEFAULT_TAP_THRESHOLD = 0.2f;
+		private const float DEFAULT_TAP_THRESHOLD = 0.8f;
 
 		private const float DEFAULT_SWIPE_THRESHOLD = 100.0f;
 
