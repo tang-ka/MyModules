@@ -1,21 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PRSController
 {
     public class ModeSelectPage : Page
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] Button btnMove;
+        [SerializeField] Button btnRotate;
+        [SerializeField] Button btnScale;
+        public void Init()
         {
-
+            //btnMove.onClick.AddListener(() => ChangeMode());
         }
 
-        // Update is called once per frame
-        void Update()
+        private void ChangeMode(PageState state)
         {
-
+            throw new NotImplementedException();
         }
-    } 
+    }
 }

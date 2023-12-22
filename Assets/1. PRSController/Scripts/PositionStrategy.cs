@@ -11,13 +11,14 @@ namespace PRSController
         {
             for (int i = 0; i < buttons.Length; i++)
             {
-
+                int index = i;
+                buttons[index].onClick.AddListener(() => ControlMethod(index));
             }
         }
 
         public void ControlMethod(int index)
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"Pushed button-{index}");
         }
     }
 }

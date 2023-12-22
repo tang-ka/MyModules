@@ -1,6 +1,7 @@
 using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PRSController
@@ -20,7 +21,7 @@ namespace PRSController
     public class PRSPageController : MonoBehaviour
     {
         #region Members
-        [SerializeField] Page[] pages;
+        [SerializeField] Dictionary<string, Page> pageDic = new Dictionary<string, Page>();
         [SerializeField] PRSData data = new PRSData();
         [SerializeField] PageState pageState;
         public PageState PageState 
@@ -81,10 +82,13 @@ namespace PRSController
         // 최초 한번만 설정하면 그 이후에는 설정 할 필요가 없는 설정들
         private void Init()
         {
-            pages = new Page[transform.childCount];
-            for (int i = 0; i < pages.Length; i++)
+            foreach (Transform child in transform)
             {
-                pages[i] = transform.GetChild(i).GetComponent<Page>();
+                Page childPage;
+                if (child.TryGetComponent<Page>(out childPage))
+                {
+                    pageDic.Add(child.gameObject.name, childPage);
+                }
             }
 
             isInit = true;
@@ -92,21 +96,23 @@ namespace PRSController
 
         private void DeInit()
         {
-            pages = null;
+            pageDic.Clear();
             data = null;
 
             isInit = false;
         }
 
-        public void OpenPage(PageState state)
+        private void OpenPage(PageState state, ControlMode mode = ControlMode.None)
         {
             string stateString = state.ToString();
 
-            for (int i = 0; i < pages.Length; i++)
+            foreach (var page in pageDic)
             {
-                string pageString = pages[i].gameObject.name.Replace("Page", "");
-                pages[i].gameObject.SetActive(pageString.Equals(stateString));
+                string pageName = page.Key.Replace("Page", "");
+                page.Value.gameObject.SetActive(pageName.Equals(stateString));
             }
+
+            //pageDic["ControlPage"].
         }
 
         public void SetTargetObject(Transform target)

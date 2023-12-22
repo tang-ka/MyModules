@@ -24,8 +24,6 @@ namespace PRSController
             {
                 PRSControllerManager.Instance.Open(new Vector2(0, 20), hit.transform);
             }
-
-
         }
 
         private void OnDestroy()
