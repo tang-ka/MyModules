@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,13 +16,13 @@ namespace PRSController
     {
         None = -1,
         ModeSelect,
-        Contorol
+        Control
     }
 
-    public class PRSPageController : MonoBehaviour
+    public class PRSPageController : PageController
     {
         #region Members
-        [SerializeField] Dictionary<string, Page> pageDic = new Dictionary<string, Page>();
+        [SerializeField] Dictionary<PageState, Page> pageDic = new Dictionary<PageState, Page>();
         [SerializeField] PRSData data = new PRSData();
         [SerializeField] PageState pageState;
         public PageState PageState 
@@ -78,16 +79,28 @@ namespace PRSController
             data = null;
         }
 
-
         // 최초 한번만 설정하면 그 이후에는 설정 할 필요가 없는 설정들
         private void Init()
         {
             foreach (Transform child in transform)
             {
                 Page childPage;
-                if (child.TryGetComponent<Page>(out childPage))
+                if (child.TryGetComponent(out childPage))
                 {
-                    pageDic.Add(child.gameObject.name, childPage);
+                    string nameToState = childPage.gameObject.name.Replace("Page", "");
+
+                    PageState result = PageState.None; 
+
+                    if (Enum.TryParse(nameToState, out result))
+                    {
+                        pageDic.Add(result, childPage);
+                        childPage.SetParentController(this);
+                    }
+                    else
+                    {
+                        Debug.Log(nameToState);
+                        Debug.LogError($"게임 오브젝트 {child.gameObject.name} 의 이름을 'PageState + Page'로 변경해주세요.");
+                    }
                 }
             }
 
@@ -102,17 +115,19 @@ namespace PRSController
             isInit = false;
         }
 
-        private void OpenPage(PageState state, ControlMode mode = ControlMode.None)
+        public void OpenPage(PageState state, ControlMode mode = ControlMode.None)
         {
-            string stateString = state.ToString();
+            string stateStr = state.ToString();
 
             foreach (var page in pageDic)
             {
-                string pageName = page.Key.Replace("Page", "");
-                page.Value.gameObject.SetActive(pageName.Equals(stateString));
+                page.Value.gameObject.SetActive(page.Key.Equals(state));
             }
 
-            //pageDic["ControlPage"].
+            if (mode != ControlMode.None)
+            {
+                (pageDic[PageState.Control] as ControlPage).ControlMode = mode;
+            }
         }
 
         public void SetTargetObject(Transform target)

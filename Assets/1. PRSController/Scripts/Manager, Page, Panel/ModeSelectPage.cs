@@ -11,14 +11,22 @@ namespace PRSController
         [SerializeField] Button btnMove;
         [SerializeField] Button btnRotate;
         [SerializeField] Button btnScale;
-        public void Init()
+
+
+
+        protected override void Init()
         {
-            //btnMove.onClick.AddListener(() => ChangeMode());
+            btnMove.onClick.AddListener(() => ChangeMode(ControlMode.Move));
+            btnRotate.onClick.AddListener(() => ChangeMode(ControlMode.Rotate));
+            btnScale.onClick.AddListener(() => ChangeMode(ControlMode.Scale));
         }
 
-        private void ChangeMode(PageState state)
+        private void ChangeMode(ControlMode mode)
         {
-            throw new NotImplementedException();
+            if (parentController is PRSPageController)
+            {
+                (parentController as PRSPageController).OpenPage(PageState.Control, mode);
+            }
         }
     }
 }

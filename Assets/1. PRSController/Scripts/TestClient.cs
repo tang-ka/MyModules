@@ -11,10 +11,10 @@ namespace PRSController
     {
         private void Awake()
         {
-            LeanTouch.OnFingerOld += ObjectEditStart ;
+            LeanTouch.OnFingerOld += ObjectControlStart ;
         }
 
-        private void ObjectEditStart(LeanFinger finger)
+        private void ObjectControlStart(LeanFinger finger)
         {
             Ray ray = Camera.main.ScreenPointToRay(finger.ScreenPosition); ;
             RaycastHit hit;
@@ -28,7 +28,7 @@ namespace PRSController
 
         private void OnDestroy()
         {
-            LeanTouch.OnFingerOld -= ObjectEditStart ;
+            LeanTouch.OnFingerOld -= ObjectControlStart ;
         }
     } 
 }
