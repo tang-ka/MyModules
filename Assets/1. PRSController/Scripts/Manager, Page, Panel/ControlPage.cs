@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PRSController
 {
@@ -11,31 +12,59 @@ namespace PRSController
         Rotate,
         Scale
     }
-       
+
     public class ControlPage : Page
     {
-        private ControlMode controlMode;
+        [SerializeField]
+        XYZControlPanel controlPanel;
 
+        [SerializeField]
+        Button btnClose;
+
+        [SerializeField]
+        private ControlMode controlMode = ControlMode.None;
         public ControlMode ControlMode
         {
             get => controlMode;
-            set
+            set 
             { 
-                controlMode = value; 
+                controlMode = value;
+                ControlModeSetting();
             }
-
         }
 
-        // Start is called before the first frame update
-        void Start()
+        protected override void Init()
         {
-
+            base.Init();
+            btnClose.onClick.AddListener(() => PRSControllerManager.Instance.Close());
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnDisable()
         {
-
+            ControlMode = ControlMode.None;
         }
-    } 
+
+        void ControlModeSetting()
+        {
+            PRSPageController parent = parentController as PRSPageController;
+
+            switch (ControlMode)
+            {
+                case ControlMode.None:
+                    controlPanel.ControlStrategy = null;
+                    break;
+                case ControlMode.Move:
+                    controlPanel.ControlStrategy = new PositionStrategy(parent.data);
+                    break;
+                case ControlMode.Rotate:
+                    controlPanel.ControlStrategy = new RotationStrategy(parent.data);
+                    break;
+                case ControlMode.Scale:
+                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data.TargetObject);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }

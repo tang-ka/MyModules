@@ -7,7 +7,6 @@ namespace PRSController
 {
     public interface IControlStrategy
     {
-        void SetButtons(ref Button[] buttons);
-        void ControlMethod(int index);
+        void ControlMethod(ControlButton button);
     } 
 }

@@ -22,7 +22,7 @@ namespace PRSController
 
             if (Physics.Raycast(ray, out hit, 50f, controlableLayer))
             {
-                PRSControllerManager.Instance.Open(new Vector2(0, 20), hit.transform);
+                PRSControllerManager.Instance.Open(new Vector2(0, 20), hit.transform.root);
             }
         }
 

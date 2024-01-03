@@ -1,8 +1,5 @@
-using Mono.Cecil.Cil;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PRSController
@@ -11,7 +8,7 @@ namespace PRSController
     /// 1. 하위 Page를 알아서 알고 있고 싶다.
     /// 2. 하위 Page의 On/Off를 책임지고 싶다.
     /// </summary>
-    
+
     public enum PageState
     {
         None = -1,
@@ -22,23 +19,18 @@ namespace PRSController
     public class PRSPageController : PageController
     {
         #region Members
-        [SerializeField] Dictionary<PageState, Page> pageDic = new Dictionary<PageState, Page>();
-        [SerializeField] PRSData data = new PRSData();
-        [SerializeField] PageState pageState;
-        public PageState PageState 
-        { 
-            get => pageState; 
-            set
-            {
-                if (value == PageState.None)
-                {
-                    PRSControllerManager.Instance.Close();
-                    return;
-                }
+        [SerializeField]
+        public Dictionary<PageState, Page> pageDic = new Dictionary<PageState, Page>();
 
-                pageState = value;
-                OpenPage(value);
-            }
+        [SerializeField]
+        public PRSData data = new PRSData();
+
+        [SerializeField]
+        PageState pageState;
+        public PageState PageState
+        {
+            get => pageState;
+            set { pageState = value; }
         }
 
         [SerializeField] bool isInit = false;
@@ -62,21 +54,21 @@ namespace PRSController
 
         private void OnDisable()
         {
-            
+            CloseSetting();
         }
         #endregion
 
         public void OpenSetting()
         {
-            if (!isInit) 
+            if (!isInit)
                 Init();
 
-            pageState = PageState.ModeSelect;
+            OpenPage(PageState.ModeSelect);
         }
 
         public void CloseSetting()
         {
-            data = null;
+            data = new PRSData();
         }
 
         // 최초 한번만 설정하면 그 이후에는 설정 할 필요가 없는 설정들
@@ -89,7 +81,7 @@ namespace PRSController
                 {
                     string nameToState = childPage.gameObject.name.Replace("Page", "");
 
-                    PageState result = PageState.None; 
+                    PageState result = PageState.None;
 
                     if (Enum.TryParse(nameToState, out result))
                     {
@@ -117,16 +109,16 @@ namespace PRSController
 
         public void OpenPage(PageState state, ControlMode mode = ControlMode.None)
         {
-            string stateStr = state.ToString();
+            if (mode != ControlMode.None)
+            {
+                (pageDic[PageState.Control] as ControlPage).ControlMode = mode;
+            }
+
+            PageState = state;
 
             foreach (var page in pageDic)
             {
                 page.Value.gameObject.SetActive(page.Key.Equals(state));
-            }
-
-            if (mode != ControlMode.None)
-            {
-                (pageDic[PageState.Control] as ControlPage).ControlMode = mode;
             }
         }
 
@@ -134,5 +126,5 @@ namespace PRSController
         {
             data.TargetObject = target;
         }
-    } 
+    }
 }

@@ -1,18 +1,20 @@
+using PRSController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ScaleStrategy : MonoBehaviour
+public class ScaleStrategy : IControlStrategy
 {
-    // Start is called before the first frame update
-    void Start()
+    Transform target;
+
+    public ScaleStrategy(Transform target)
     {
-        
+        this.target = target;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ControlMethod(ControlButton button)
     {
-        
+        Debug.Log($"Scale button {button}");
     }
 }

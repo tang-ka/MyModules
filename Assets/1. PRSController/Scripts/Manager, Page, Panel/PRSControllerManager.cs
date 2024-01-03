@@ -51,7 +51,5 @@ namespace PRSController
         {
             PRSController.gameObject.SetActive(false);
         }
-
-
     } 
 }
