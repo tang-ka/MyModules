@@ -15,11 +15,10 @@ namespace PRSController
 
     public class ControlPage : Page
     {
-        [SerializeField]
-        XYZControlPanel controlPanel;
+        [SerializeField] XYZControlPanel controlPanel;
+        [SerializeField] DifferentialIntervalPanel differnetialIntervalPanel;
 
-        [SerializeField]
-        Button btnClose;
+        [SerializeField] Button btnClose;
 
         [SerializeField]
         private ControlMode controlMode = ControlMode.None;
@@ -37,6 +36,8 @@ namespace PRSController
         {
             base.Init();
             btnClose.onClick.AddListener(() => PRSControllerManager.Instance.Close());
+
+            differnetialIntervalPanel.SetData((parentController as PRSPageController).data);
         }
 
         private void OnDisable()
@@ -60,7 +61,7 @@ namespace PRSController
                     controlPanel.ControlStrategy = new RotationStrategy(parent.data);
                     break;
                 case ControlMode.Scale:
-                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data.TargetObject);
+                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data);
                     break;
                 default:
                     break;
