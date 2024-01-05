@@ -21,6 +21,9 @@ public class DifferentialIntervalPanel : MonoBehaviour
     [SerializeField] PointerEventData eventData;
     [SerializeField] List<RaycastResult> results;
 
+    public float dialValue = 0;
+    const float UNIT_VALUE = 0.01f;
+
     private void Awake()
     {
         var canvas = GetComponentInParent<Canvas>();
@@ -61,16 +64,48 @@ public class DifferentialIntervalPanel : MonoBehaviour
         var layer = results[0].gameObject.layer;
         if (layer == LayerMask.NameToLayer("DialHandle"))
         {
+            dialHandlePosition = new Vector2(dialHandle.position.x, dialHandle.position.y);
+            startTouchVector = (finger.StartScreenPosition - dialHandlePosition).normalized;
+            preTouchVector = startTouchVector;
             LeanTouch.OnFingerUpdate += DialMove;
         }
     }
 
+    Vector2 startTouchVector;
+    Vector2 dialHandlePosition;
+    Vector2 defaultDialHandlePosition = Vector2.up;
+
+    Vector2 preTouchVector;
+    Vector2 curTouchVector;
+    float totalDelta;
     private void DialMove(LeanFinger finger)
     {
-        var defaultPosition = Vector2.up;
-        //var touchVector = finger.ScreenPosition - dialHandle.position;
+        curTouchVector = (finger.ScreenPosition - dialHandlePosition).normalized;
 
-        Debug.Log(dialHandle.position);
+        var deltaAngle = SignedAngle(preTouchVector, curTouchVector, -dialHandle.forward);
+
+        totalDelta += deltaAngle;
+
+        if (Mathf.Abs(totalDelta) > 30)
+        {
+            dialValue += totalDelta/Mathf.Abs(totalDelta) * 30;
+            totalDelta -= 30;
+        
+            dialValue += deltaAngle;
+            dialValue = Mathf.Clamp(dialValue, 0, 1079);
+
+            float tempDialValue = dialValue % 360;
+            float z = 0;
+            if (dialValue <= 180)
+                z = Mathf.Floor(-dialValue);
+            else
+                z = Mathf.Floor(360 - dialValue);
+
+            dialHandle.rotation = Quaternion.Euler(0, 0, z);
+            fill.fillAmount = dialValue / 360;
+        }
+
+        preTouchVector = curTouchVector;
     }
 
     private void DialFinish(LeanFinger finger)
@@ -90,4 +125,23 @@ public class DifferentialIntervalPanel : MonoBehaviour
             return true;
     }
 
+    private float SignedAngle(Vector2 from, Vector2 to, Vector3 positiveSide)
+    {
+        Vector3 fromVec = new Vector3(from.x, from.y, 0);
+        Vector3 toVec = new Vector3(to.x, to.y, 0);
+
+        fromVec.Normalize();
+        toVec.Normalize();
+        positiveSide.Normalize();
+
+        var crossProduct = Vector3.Cross(fromVec, toVec);
+        var dotProduct = Vector3.Dot(crossProduct, positiveSide);
+
+        var signedAngle = Vector2.Angle(from, to);
+
+        if (dotProduct > 0)
+            return signedAngle;
+        else
+            return -signedAngle;
+    }
 }  
