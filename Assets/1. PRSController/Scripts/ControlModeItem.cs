@@ -16,10 +16,8 @@ namespace PRSController
 
         private void Awake()
         {
-            toggle = GetComponent<Toggle>();
             title = GetComponentInChildren<Text>();
             icon = GetComponentInChildren<Image>();
-
         }
 
         public void SetToggleListener(ControlMode mode, ControlPage page)
@@ -37,9 +35,15 @@ namespace PRSController
         private void ActivateIconColor(bool isOn)
         {
             if (isOn)
+            {
+
                 icon.color = Define.SELECTED_MODE_IMG_COLOR;
+            }
             else
+            {
+
                 icon.color = Define.DESELECTED_MODE_IMG_COLOR;
+            }
         }
     } 
 }
