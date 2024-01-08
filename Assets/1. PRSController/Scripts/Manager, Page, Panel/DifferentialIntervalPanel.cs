@@ -22,6 +22,7 @@ public class DifferentialIntervalPanel : MonoBehaviour
     [SerializeField] List<RaycastResult> results;
 
     public float dialValue = 0;
+    public float intervalValue = 0.01f;
     const float UNIT_VALUE = 0.01f;
 
     private void Awake()
@@ -43,14 +44,15 @@ public class DifferentialIntervalPanel : MonoBehaviour
         LeanTouch.OnFingerUp -= DialFinish;
     }
 
-    public void SetData(PRSData data)
+    public void SetData(ref PRSData data)
     {
         this.data = data;
     }
 
-    private void UpdateText()
+    private void UpdateDifferentialInterval(float intervalValue)
     {
-        txtInterval.text = data.DifferentialInterval.ToString();
+        data.DifferentialInterval = intervalValue;
+        txtInterval.text = string.Format("{0:0.00}",data.DifferentialInterval);
     }
 
     private void DialStart(LeanFinger finger)
@@ -88,11 +90,10 @@ public class DifferentialIntervalPanel : MonoBehaviour
 
         if (Mathf.Abs(totalDelta) > 30)
         {
-            dialValue += totalDelta/Mathf.Abs(totalDelta) * 30;
-            totalDelta -= 30;
-        
-            dialValue += deltaAngle;
-            dialValue = Mathf.Clamp(dialValue, 0, 1079);
+            dialValue += (totalDelta / Mathf.Abs(totalDelta)) * 30;
+            totalDelta %= 30;
+
+            dialValue = Mathf.Clamp(dialValue, 0, 3600);
 
             float tempDialValue = dialValue % 360;
             float z = 0;
@@ -103,6 +104,9 @@ public class DifferentialIntervalPanel : MonoBehaviour
 
             dialHandle.rotation = Quaternion.Euler(0, 0, z);
             fill.fillAmount = dialValue / 360;
+
+            intervalValue += (totalDelta / Mathf.Abs(totalDelta)) * UNIT_VALUE;
+            UpdateDifferentialInterval(intervalValue);
         }
 
         preTouchVector = curTouchVector;

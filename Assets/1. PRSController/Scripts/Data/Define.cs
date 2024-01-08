@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Define : MonoBehaviour
+public static class Define
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public readonly static Color SELECTED_MODE_BTN_COLOR = new Color(1, 1, 1, 0.4f);
+    public readonly static Color SELECTED_MODE_IMG_COLOR = new Color(0.15f, 0.15f, 0.15f, 1);
+    public readonly static Color DESELECTED_MODE_BTN_COLOR = new Color(0, 0, 0, 0.8f);
+    public readonly static Color DESELECTED_MODE_IMG_COLOR = new Color(0.8f, 0.8f, 0.8f, 1);
 }

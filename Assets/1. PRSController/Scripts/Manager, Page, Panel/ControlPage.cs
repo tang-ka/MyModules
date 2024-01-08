@@ -37,7 +37,7 @@ namespace PRSController
             base.Init();
             btnClose.onClick.AddListener(() => PRSControllerManager.Instance.Close());
 
-            differnetialIntervalPanel.SetData((parentController as PRSPageController).data);
+            differnetialIntervalPanel.SetData(ref (parentController as PRSPageController).data);
         }
 
         private void OnDisable()
