@@ -17,15 +17,15 @@ public class Page : MonoBehaviour
         
     }
 
-    List<T> FindInChildren<T>(Transform parent)
-    {
-        List<T> result = new List<T>();
+    //List<T> FindInChildren<T>(Transform parent)
+    //{
+    //    List<T> result = new List<T>();
 
-        foreach (transform child in parent)
-        {
-            child.
-        }
-    }
+    //    foreach (Transform child in parent)
+    //    {
+    //        child
+    //    }
+    //}
 
     public void SetParentController(PageController parentController)
     {
