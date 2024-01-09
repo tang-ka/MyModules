@@ -14,7 +14,7 @@ namespace PRSController
         Z_PLUS = 5
     }
 
-    public class XYZControlPanel : MonoBehaviour
+    public class XYZControlPanel : Panel
     {
         [SerializeField] Button[] controlButtons;
 

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using Lean.Touch;
 using static CW.Common.CwInputManager;
 
-public class DifferentialIntervalPanel : MonoBehaviour
+public class DifferentialIntervalPanel : Panel
 {
     PRSData data;
 

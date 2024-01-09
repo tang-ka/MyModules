@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 namespace PRSController
 {
-    public class ModePanel : MonoBehaviour
+    public class ModePanel : Panel
     {
-        [SerializeField] ControlModeItem tglMoveMode;
-        [SerializeField] ControlModeItem tglRotateMode;
-        [SerializeField] ControlModeItem tglScaleMode;
+        [SerializeField] ControlModeToggleItem tglMoveMode;
+        [SerializeField] ControlModeToggleItem tglRotateMode;
+        [SerializeField] ControlModeToggleItem tglScaleMode;
 
         private void Awake()
         {
             var controlPage = transform.parent.GetComponent<ControlPage>();
-            tglMoveMode.SetToggleListener(PRSController.ControlMode.Move, controlPage);
-            tglRotateMode.SetToggleListener(PRSController.ControlMode.Rotate, controlPage);
-            tglScaleMode.SetToggleListener(PRSController.ControlMode.Scale, controlPage);
+            tglMoveMode.SetToggleListener(ControlMode.Move, controlPage);
+            tglRotateMode.SetToggleListener(ControlMode.Rotate, controlPage);
+            tglScaleMode.SetToggleListener(ControlMode.Scale, controlPage);
         }
     }
 }

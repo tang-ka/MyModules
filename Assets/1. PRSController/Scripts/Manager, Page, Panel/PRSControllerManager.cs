@@ -25,6 +25,7 @@ namespace PRSController
 
         public void Open(Vector2 openPosition, Transform target)
         {
+            // Controller가 만들어져 있지 않다면 생성하고 싶다.
             if (PRSController == null)
             {
                 Create(openPosition, target);
@@ -50,6 +51,18 @@ namespace PRSController
         public void Close()
         {
             PRSController.gameObject.SetActive(false);
+        }
+
+        public void Refresh()
+        {
+            if (PRSController.PageState == PageState.ModeSelect)
+            {
+
+            }
+            else if (PRSController.PageState == PageState.Control)
+            {
+
+            }
         }
     } 
 }
