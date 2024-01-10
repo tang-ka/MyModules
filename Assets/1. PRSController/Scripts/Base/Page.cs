@@ -13,19 +13,23 @@ public class Page : MonoBehaviour
     private void Awake() { Init(); }
 
     protected virtual void Init() 
-    { 
-        
+    {
+        FindAllChildren(transform);
     }
 
-    //List<T> FindInChildren<T>(Transform parent)
-    //{
-    //    List<T> result = new List<T>();
+    void FindAllChildren(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            FindAllChildren(child);
 
-    //    foreach (Transform child in parent)
-    //    {
-    //        child
-    //    }
-    //}
+            Panel panel;
+            if (child.TryGetComponent(out panel))
+            {
+                panels.Add(panel);
+            }
+        }
+    }
 
     public void SetParentController(PageController parentController)
     {

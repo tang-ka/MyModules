@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace PRSController
@@ -32,6 +33,13 @@ namespace PRSController
                 return;
             }
 
+            if (PRSController.isActiveAndEnabled)
+            {
+                Refresh();
+                PRSController.SetTargetObject(target);
+                return;
+            }
+
             Open(openPosition);
             PRSController.SetTargetObject(target);
         }
@@ -53,15 +61,15 @@ namespace PRSController
             PRSController.gameObject.SetActive(false);
         }
 
-        public void Refresh()
+        public async void Refresh()
         {
-            if (PRSController.PageState == PageState.ModeSelect)
-            {
+            var panels = PRSController.pageDic[PRSController.PageState].panels;
 
-            }
-            else if (PRSController.PageState == PageState.Control)
+            foreach (var panel in panels)
             {
-
+                panel.gameObject.SetActive(false);
+                await UniTask.Delay(50);
+                panel.gameObject.SetActive(true);
             }
         }
     } 

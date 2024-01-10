@@ -13,13 +13,15 @@ namespace PRSController
         protected override void Init()
         {
             base.Init();
-            target = pageController.data.TargetObject;
+
+            pageController.onSetTarget += ((target) => this.target = target);
+
             SetLampColor(Define.CONNECT, Define.DISCONNECT);
         }
 
         protected override void Monitoring()
         {
-            onSwitchLamp?.Invoke(target != null);
+            onSwitchLamp?.Invoke(target != null && target.gameObject.activeInHierarchy);
         }
     } 
 }

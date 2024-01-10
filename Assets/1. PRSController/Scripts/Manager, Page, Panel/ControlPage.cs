@@ -19,8 +19,6 @@ namespace PRSController
         [SerializeField] XYZControlPanel controlPanel;
         [SerializeField] DifferentialIntervalPanel differnetialIntervalPanel;
 
-        [SerializeField] Button btnClose;
-
         public Action<ControlMode> onChangeControlMode;
 
         [SerializeField]
@@ -39,7 +37,6 @@ namespace PRSController
         protected override void Init()
         {
             base.Init();
-            btnClose.onClick.AddListener(() => PRSControllerManager.Instance.Close());
 
             differnetialIntervalPanel.SetData(ref (parentController as PRSPageController).data);
         }

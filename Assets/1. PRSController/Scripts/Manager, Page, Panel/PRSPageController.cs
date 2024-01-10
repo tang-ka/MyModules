@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PRSController
 {
@@ -19,20 +20,27 @@ namespace PRSController
     public class PRSPageController : PageController
     {
         #region Members
-        [SerializeField]
         public Dictionary<PageState, Page> pageDic = new Dictionary<PageState, Page>();
+        public RectTransform background;
 
-        [SerializeField]
         public PRSData data = new PRSData();
 
+        [SerializeField] Button btnClose;
         [SerializeField]
         PageState pageState;
         public PageState PageState
         {
             get => pageState;
-            set { pageState = value; }
+            set 
+            { 
+                pageState = value;
+
+                if (value != PageState.None)
+                    SetBackgroundRectTransform(pageDic[pageState].GetComponent<RectTransform>());
+            }
         }
 
+        public Action<Transform> onSetTarget;
         [SerializeField] bool isInit = false;
         #endregion
 
@@ -96,6 +104,7 @@ namespace PRSController
                 }
             }
 
+            btnClose.onClick.AddListener(() => PRSControllerManager.Instance.Close());
             isInit = true;
         }
 
@@ -125,6 +134,16 @@ namespace PRSController
         public void SetTargetObject(Transform target)
         {
             data.TargetObject = target;
+            onSetTarget?.Invoke(target);
+        }
+
+        private void SetBackgroundRectTransform(RectTransform page)
+        {
+            background.position = page.position;
+            background.anchoredPosition = page.anchoredPosition;
+            background.anchorMax = page.anchorMax;
+            background.anchorMin = page.anchorMin;
+            background.sizeDelta = page.sizeDelta;
         }
     }
 }
