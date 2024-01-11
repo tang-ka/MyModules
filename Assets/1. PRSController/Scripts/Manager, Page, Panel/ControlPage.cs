@@ -34,6 +34,18 @@ namespace PRSController
             }
         }
 
+        private bool isLocal;
+        public bool IsLocal
+        {
+            get => isLocal;
+            set
+            {
+                isLocal = value;
+                onChangeControlOption?.Invoke(isLocal);
+            }
+        }
+        public Action<bool> onChangeControlOption;
+
         protected override void Init()
         {
             base.Init();
@@ -56,13 +68,13 @@ namespace PRSController
                     controlPanel.ControlStrategy = null;
                     break;
                 case ControlMode.Move:
-                    controlPanel.ControlStrategy = new PositionStrategy(parent.data);
+                    controlPanel.ControlStrategy = new PositionStrategy(parent.data, isLocal);
                     break;
                 case ControlMode.Rotate:
-                    controlPanel.ControlStrategy = new RotationStrategy(parent.data);
+                    controlPanel.ControlStrategy = new RotationStrategy(parent.data, isLocal);
                     break;
                 case ControlMode.Scale:
-                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data);
+                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data, isLocal);
                     break;
                 default:
                     break;

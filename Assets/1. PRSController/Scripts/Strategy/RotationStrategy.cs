@@ -1,52 +1,52 @@
-using PRSController;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class RotationStrategy : IControlStrategy
+namespace PRSController
 {
-    PRSData data;
-
-    public RotationStrategy(PRSData data)
+    public class RotationStrategy : ControlStrategy
     {
-        this.data = data;
-    }
+        public RotationStrategy(PRSData data, bool isLocal) : base(data, isLocal) { }
 
-    public void ControlMethod(ControlButton button)
-    {
-        Vector3 rotVec = Vector3.zero;
-
-        switch (button)
+        public override void ControlMethod(ControlButton button)
         {
-            case ControlButton.X_MINUS:
-                rotVec = Vector3.left;
-                break;
+            Vector3 rotVec = Vector3.zero;
 
-            case ControlButton.X_PLUS:
-                rotVec = Vector3.right;
-                break;
+            switch (button)
+            {
+                case ControlButton.X_MINUS:
+                    rotVec = Vector3.left;
+                    break;
 
-            case ControlButton.Y_MINUS:
-                rotVec = Vector3.down;
-                break;
+                case ControlButton.X_PLUS:
+                    rotVec = Vector3.right;
+                    break;
 
-            case ControlButton.Y_PLUS:
-                rotVec = Vector3.up;
-                break;
+                case ControlButton.Y_MINUS:
+                    rotVec = Vector3.down;
+                    break;
 
-            case ControlButton.Z_MINUS:
-                rotVec = Vector3.back;
-                break;
+                case ControlButton.Y_PLUS:
+                    rotVec = Vector3.up;
+                    break;
 
-            case ControlButton.Z_PLUS:
-                rotVec = Vector3.forward;
-                break;
+                case ControlButton.Z_MINUS:
+                    rotVec = Vector3.back;
+                    break;
 
-            default:
-                break;
+                case ControlButton.Z_PLUS:
+                    rotVec = Vector3.forward;
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (isLocal)
+                data.TargetObject.transform.localRotation *= Quaternion.Euler(5 * rotVec);
+            else
+            {
+                data.TargetObject.transform.Rotate(rotVec, 5, Space.World);
+
+            }
         }
-
-        data.TargetObject.transform.localRotation *= Quaternion.Euler(5 * rotVec);
     }
 }

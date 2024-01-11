@@ -28,6 +28,7 @@ namespace PRSController
         private void Awake()
         {
             controlButtons = GetComponentsInChildren<Button>();
+            GetComponentInParent<ControlPage>().onChangeControlOption += SetControlOption;
 
             for (int i = 0; i < controlButtons.Length; i++)
             {
@@ -39,6 +40,11 @@ namespace PRSController
         public void Control(ControlButton btn)
         {
             controlStrategy.ControlMethod(btn);
+        }
+
+        void SetControlOption(bool isLocal)
+        {
+            (controlStrategy as ControlStrategy).IsLocal = isLocal;
         }
     }
 }
