@@ -15,6 +15,9 @@ namespace PRSController
         Dictionary<bool, Color> handleColor = new Dictionary<bool, Color>();
         Dictionary<bool, Color> textMarkColor = new Dictionary<bool, Color>();
 
+        Vector2 handlePosition;
+        Vector2 textMarkPosition;
+
         protected override void Awake()
         {
             base.Awake();
@@ -26,6 +29,10 @@ namespace PRSController
             SetOnColor(Define.THEME_ALPHAWHITE, Define.THEME_BLACK, Define.THEME_BLACK);
             SetOffColor(Define.THEME_ALPHABLACK, Define.THEME_WHITE, Define.THEME_WHITE);
 
+            handlePosition = handle.GetComponent<RectTransform>().anchoredPosition;
+            textMarkPosition = textMark.GetComponent<RectTransform>().anchoredPosition;
+
+            Animate(isOn);
             onValueChanged.AddListener(Animate);
         }
 
@@ -33,16 +40,21 @@ namespace PRSController
         {
             if (isOn)
             {
-
+                textMark.text = "L";
                 Debug.Log("Animate toggle on");
             }
             else
             {
-
+                textMark.text = "W";
                 Debug.Log("Animate toggle off");
             }
 
             ChangeColor(isOn);
+        }
+
+        void SlideMove()
+        {
+            //handle.GetComponent<RectTransform>().anchoredPosition;
         }
 
         void SetOnColor(Color bgON, Color hdlON, Color txtON)
