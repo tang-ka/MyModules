@@ -7,81 +7,62 @@ using UnityEngine.UI;
 
 namespace PRSController
 {
-    public class SlideToggle : Toggle
+    [RequireComponent(typeof(Toggle))]
+    public class SlideToggle : MonoBehaviour
     {
+        [Header("Components")]
+        public Toggle toggle;
         [SerializeField] Image background;
         [SerializeField] Image handle;
-        [SerializeField] Text txtIcon;
-        [SerializeField] Image imgIcon;
 
         Dictionary<bool, Color> backgroundColor = new Dictionary<bool, Color>();
         Dictionary<bool, Color> handleColor = new Dictionary<bool, Color>();
-        Dictionary<bool, Color> iconColor = new Dictionary<bool, Color>();
+
+        protected Dictionary<bool, Vector2> translateVector = new Dictionary<bool, Vector2>()
+        {
+            { true, new Vector2(-1, 1) },
+            { false, new Vector2(1, 1) },
+        };
 
         Vector2 handleOffPosition;
-        Vector2 iconOffPosition;
 
-        bool isImgIcon = false;
+        CancellationTokenSource handleMoveTokenSource;
+        CancellationToken handleMoveToken;
 
-        private CancellationTokenSource cancellationTokenSource;
-
-        protected override void Awake()
+        protected virtual void Awake()
         {
-            base.Awake();
-
+            toggle = GetComponent<Toggle>();
             background = GetComponent<Image>();
-            handle = transform.Find("Handle").GetComponent<Image>();
 
-            if (transform.Find("Icon").TryGetComponent(out imgIcon))
-            {
-                isImgIcon = true;
-            }
-            else
-            {
-                txtIcon = GetComponentInChildren<Text>();
-                isImgIcon = false;
-            }
+            SetOnColor(Define.THEME_ALPHAWHITE, Define.THEME_BLACK);
+            SetOffColor(Define.THEME_ALPHABLACK, Define.THEME_WHITE);
 
-            SetOnColor(Define.THEME_ALPHAWHITE, Define.THEME_BLACK, Define.THEME_BLACK);
-            SetOffColor(Define.THEME_ALPHABLACK, Define.THEME_WHITE, Define.THEME_WHITE);
-
-            isOn = false;
+            toggle.isOn = false;
 
             handleOffPosition = handle.GetComponent<RectTransform>().anchoredPosition;
-            var rectTransform = isImgIcon ? imgIcon.GetComponent<RectTransform>() : txtIcon.GetComponent<RectTransform>();
-            iconOffPosition = rectTransform.anchoredPosition;
 
-            onValueChanged.AddListener(Animate);
-            Animate(isOn);
+            toggle.onValueChanged.AddListener(Animate);
+            Animate(toggle.isOn);
         }
 
-        private void Animate(bool isOn)
+        protected virtual void Animate(bool isOn)
         {
-            if (cancellationTokenSource != null)
-                cancellationTokenSource.Cancel();
+            if (handleMoveTokenSource != null)
+                handleMoveTokenSource.Cancel();
 
-            cancellationTokenSource = new CancellationTokenSource();
+            handleMoveTokenSource = new CancellationTokenSource();
+            handleMoveToken = handleMoveTokenSource.Token;
 
-            var changeFactor = isOn ? Vector2.left : Vector2.right;
-            changeFactor += Vector2.up;
+            var handleTargetPosition = handleOffPosition * translateVector[isOn];
 
-            var handleTargetPosition = handleOffPosition * changeFactor;
-            var iconTargetPosition = iconOffPosition * changeFactor;
+            SlideMove(handle.GetComponent<RectTransform>(), handleTargetPosition, handleMoveToken);
 
-            var iconRectTransform = isImgIcon ? imgIcon.GetComponent<RectTransform>() : txtIcon.GetComponent<RectTransform>();
-
-            SlideMove(handle.GetComponent<RectTransform>(), handleTargetPosition, cancellationTokenSource.Token);
-            SlideMove(iconRectTransform, iconTargetPosition, cancellationTokenSource.Token);
-
-            if (!isImgIcon)
-                txtIcon.text = isOn ? "L" : "W";
-
-            ChangeColor(isOn);
+            ChangeUI(isOn);
         }
 
-        async void SlideMove(RectTransform entity, Vector2 targetPosition, CancellationToken cancellationToken)
+        protected async void SlideMove(RectTransform entity, Vector2 targetPosition, CancellationToken cancellationToken)
         {
-            
+
             await UniTask.WaitUntil(() =>
             {
                 try
@@ -99,6 +80,7 @@ namespace PRSController
                 }
                 catch (OperationCanceledException)
                 {
+                    //Debug.Log($"{transform.name} - {entity.gameObject.name}");
                     return true;
                 }
 
@@ -107,29 +89,38 @@ namespace PRSController
 
         }
 
-        void SetOnColor(Color bgON, Color hdlON, Color txtON)
+        protected void SetOnColor(Color bgON, Color hdlON)
         {
             backgroundColor[true] = bgON;
             handleColor[true] = hdlON;
-            iconColor[true] = txtON;
         }
 
-        void SetOffColor(Color bgOFF, Color hdlOFF, Color txtOFF)
+        protected void SetOffColor(Color bgOFF, Color hdlOFF)
         {
             backgroundColor[false] = bgOFF;
             handleColor[false] = hdlOFF;
-            iconColor[false] = txtOFF;
         }
 
-        void ChangeColor(bool isOn)
+        protected virtual void ChangeUI(bool isOn)
         {
             background.color = backgroundColor[isOn];
             handle.color = handleColor[isOn];
+        }
 
-            if (isImgIcon)
-                imgIcon.color = iconColor[isOn];
+        public virtual void Interactable(bool isInteractable)
+        {
+            toggle.interactable = isInteractable;
+            if (isInteractable)
+            {
+                ChangeUI(toggle.isOn);
+            }
             else
-                txtIcon.color = iconColor[isOn];
+            {
+                background.color *= new Color(1, 1, 1, 0);
+                background.color += new Color(0, 0, 0, 0.3f);
+                handle.color *= new Color(1, 1, 1, 0);
+                handle.color += new Color(0, 0, 0, 0.3f);
+            }
         }
     }
 }

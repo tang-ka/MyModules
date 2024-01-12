@@ -4,7 +4,7 @@ namespace PRSController
 {
     public class RotationStrategy : ControlStrategy
     {
-        public RotationStrategy(PRSData data, bool isLocal) : base(data, isLocal) { }
+        public RotationStrategy(PRSData data, ControlOption option) : base(data, option) { }
 
         public override void ControlMethod(ControlButton button)
         {
@@ -40,7 +40,7 @@ namespace PRSController
                     break;
             }
 
-            if (isLocal)
+            if (option.HasFlag(ControlOption.Option_Local))
                 data.TargetObject.transform.localRotation *= Quaternion.Euler(5 * rotVec);
             else
             {

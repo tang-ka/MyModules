@@ -42,9 +42,9 @@ namespace PRSController
             controlStrategy.ControlMethod(btn);
         }
 
-        void SetControlOption(bool isLocal)
+        void SetControlOption(ControlOption option)
         {
-            (controlStrategy as ControlStrategy).IsLocal = isLocal;
+            (controlStrategy as ControlStrategy).Option = option;
         }
     }
 }

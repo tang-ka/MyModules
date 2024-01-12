@@ -36,7 +36,7 @@ namespace PRSController
                 pageState = value;
 
                 if (value != PageState.None)
-                    SetBackgroundRectTransform(pageDic[pageState].GetComponent<RectTransform>());
+                    SetBackgroundRectTransform(pageDic[pageState]?.GetComponent<RectTransform>());
             }
         }
 

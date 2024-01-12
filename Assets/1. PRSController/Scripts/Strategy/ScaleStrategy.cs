@@ -4,7 +4,7 @@ namespace PRSController
 {
     public class ScaleStrategy : ControlStrategy
     {
-        public ScaleStrategy(PRSData data, bool isLocal) : base(data, isLocal) { }
+        public ScaleStrategy(PRSData data, ControlOption option) : base(data, option) { }
 
         public override void ControlMethod(ControlButton button)
         {
@@ -40,7 +40,13 @@ namespace PRSController
                     break;
             }
 
-            data.TargetObject.transform.localScale += data.DifferentialInterval * dirVec;
+            if (option.HasFlag(ControlOption.Option_Constrained))
+            {
+                dirVec = ((int)button % 2 == 1) ? Vector3.one : -Vector3.one;
+                data.TargetObject.transform.localScale += data.DifferentialInterval * dirVec;
+            }
+            else
+                data.TargetObject.transform.localScale += data.DifferentialInterval * dirVec;
         }
     }
 }

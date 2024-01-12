@@ -14,6 +14,14 @@ namespace PRSController
         Scale
     }
 
+    [Flags]
+    public enum ControlOption
+    {
+        None = 0,
+        Option_Local        = 1 << 0,
+        Option_Constrained  = 1 << 1,
+    }
+
     public class ControlPage : Page
     {
         [SerializeField] XYZControlPanel controlPanel;
@@ -34,17 +42,32 @@ namespace PRSController
             }
         }
 
-        private bool isLocal;
-        public bool IsLocal
+        ControlOption controlOption = ControlOption.None;
+        public ControlOption ControlOption
         {
-            get => isLocal;
+            get => controlOption;
             set
             {
-                isLocal = value;
-                onChangeControlOption?.Invoke(isLocal);
+                controlOption ^= value;
+                onChangeControlOption?.Invoke(controlOption);
             }
+
         }
-        public Action<bool> onChangeControlOption;
+
+        public Action<ControlOption> onChangeControlOption;
+
+        //public bool isContrained;
+        //private bool isLocal;
+        //public bool IsLocal
+        //{
+        //    get => isLocal;
+        //    set
+        //    {
+        //        isLocal = value;
+        //        onChangeControlOption?.Invoke(isLocal);
+        //    }
+        //}
+        //public Action<bool> onChangeControlOption;
 
         protected override void Init()
         {
@@ -68,13 +91,13 @@ namespace PRSController
                     controlPanel.ControlStrategy = null;
                     break;
                 case ControlMode.Move:
-                    controlPanel.ControlStrategy = new PositionStrategy(parent.data, isLocal);
+                    controlPanel.ControlStrategy = new PositionStrategy(parent.data, ControlOption);
                     break;
                 case ControlMode.Rotate:
-                    controlPanel.ControlStrategy = new RotationStrategy(parent.data, isLocal);
+                    controlPanel.ControlStrategy = new RotationStrategy(parent.data, ControlOption);
                     break;
                 case ControlMode.Scale:
-                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data, isLocal);
+                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data, ControlOption);
                     break;
                 default:
                     break;

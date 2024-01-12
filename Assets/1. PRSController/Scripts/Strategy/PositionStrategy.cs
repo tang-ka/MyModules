@@ -5,7 +5,7 @@ namespace PRSController
 {
     public class PositionStrategy : ControlStrategy
     {
-        public PositionStrategy(PRSData data, bool isLocal) : base(data, isLocal) { }
+        public PositionStrategy(PRSData data, ControlOption option) : base(data, option) { }
 
         public override void ControlMethod(ControlButton button)
         {
@@ -41,7 +41,7 @@ namespace PRSController
                     break;
             }
 
-            if (isLocal)
+            if (option.HasFlag(ControlOption.Option_Local))
                 data.TargetObject.transform.Translate(data.DifferentialInterval * dirVec, Space.Self);
             else
                 data.TargetObject.transform.Translate(data.DifferentialInterval * dirVec, Space.World);
