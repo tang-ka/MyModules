@@ -133,7 +133,7 @@ namespace PRSController
 
         public void SetTargetObject(Transform target)
         {
-            data.TargetObject = target;
+            data.TargetObject = target;1
             onSetTarget?.Invoke(target);
         }
 
