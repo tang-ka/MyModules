@@ -40,6 +40,7 @@ namespace PRSController
                     break;
             }
 
+
             if (option.HasFlag(ControlOption.Option_Constrained))
             {
                 dirVec = ((int)button % 2 == 1) ? Vector3.one : -Vector3.one;

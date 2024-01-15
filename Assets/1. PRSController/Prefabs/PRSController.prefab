@@ -1005,7 +1005,6 @@ MonoBehaviour:
   controlPanel: {fileID: 2952344127149564649}
   differnetialIntervalPanel: {fileID: 6377636768153585671}
   controlMode: -1
-  isContrained: 0
 --- !u!1 &1882675735814125227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,6 +5945,7 @@ GameObject:
   - component: {fileID: 8353682581791327120}
   - component: {fileID: 4792505927790708809}
   - component: {fileID: 7317308148447630698}
+  - component: {fileID: 4697676392346762676}
   m_Layer: 5
   m_Name: PRSController
   m_TagString: Untagged
@@ -6000,6 +6000,20 @@ MonoBehaviour:
   btnClose: {fileID: 3229553723250854046}
   pageState: 0
   isInit: 0
+--- !u!114 &4697676392346762676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8353682581791327121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935691a52f074b841bcddd27e50fea84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisGuidePrefab: {fileID: 5469340078172764227, guid: d8ad93eaad6d40d42a170adf521683d4,
+    type: 3}
 --- !u!1 &8434756380452595919
 GameObject:
   m_ObjectHideFlags: 0

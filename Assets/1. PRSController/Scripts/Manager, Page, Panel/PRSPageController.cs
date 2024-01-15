@@ -24,10 +24,10 @@ namespace PRSController
         public RectTransform background;
 
         public PRSData data = new PRSData();
+        AxisGuideHandler axisGuideHandler;
 
         [SerializeField] Button btnClose;
-        [SerializeField]
-        PageState pageState;
+        [SerializeField] PageState pageState;
         public PageState PageState
         {
             get => pageState;
@@ -104,6 +104,9 @@ namespace PRSController
                 }
             }
 
+            if (transform.TryGetComponent(out axisGuideHandler))
+                axisGuideHandler.Activate(false);
+
             btnClose.onClick.AddListener(() => PRSControllerManager.Instance.Close());
             isInit = true;
         }
@@ -134,6 +137,8 @@ namespace PRSController
         public void SetTargetObject(Transform target)
         {
             data.TargetObject = target;
+            axisGuideHandler.Attach(target);
+            axisGuideHandler.Activate(true);
             onSetTarget?.Invoke(target);
         }
 
