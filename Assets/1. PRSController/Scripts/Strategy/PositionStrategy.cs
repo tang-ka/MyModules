@@ -45,7 +45,6 @@ namespace PRSController
                 data.TargetObject.transform.Translate(data.DifferentialInterval * dirVec, Space.Self);
             else
                 data.TargetObject.transform.Translate(data.DifferentialInterval * dirVec, Space.World);
-
         }
     }
 }

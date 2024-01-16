@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PRSController
+namespace TangkaUI
 {
     public abstract class Lamp : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] protected Image bulb;
 
         private void Awake()

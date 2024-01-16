@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TangkaUI;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace PRSController
 {
     public class ConnectionLamp : OnOffLamp
     {
+        [Header("Data")]
         [SerializeField] PRSPageController pageController;
         Transform target;
 

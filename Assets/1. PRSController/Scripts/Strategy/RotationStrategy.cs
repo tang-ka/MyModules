@@ -40,13 +40,21 @@ namespace PRSController
                     break;
             }
 
+#if !UNITY_EDITOR
+            if (option.HasFlag(ControlOption.Option_Local))
+                data.TargetObject.transform.localRotation *= Quaternion.Euler(data.DifferentialInterval * rotVec);
+            else
+            {
+                data.TargetObject.transform.Rotate(rotVec, data.DifferentialInterval, Space.World);
+            }
+#else
             if (option.HasFlag(ControlOption.Option_Local))
                 data.TargetObject.transform.localRotation *= Quaternion.Euler(5 * rotVec);
             else
             {
                 data.TargetObject.transform.Rotate(rotVec, 5, Space.World);
-
             }
+#endif
         }
     }
 }

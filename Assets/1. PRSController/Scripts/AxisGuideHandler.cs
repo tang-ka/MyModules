@@ -1,62 +1,62 @@
-using PRSController;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AxisGuideHandler : MonoBehaviour
+namespace PRSController
 {
-    [SerializeField] GameObject axisGuidePrefab;
-    GameObject axisGuide;
-    Transform axisTarget;
-
-    PRSPageController pageController;
-
-    bool isAttached;
-    bool isLocal;
-
-    private void Create()
+    public class AxisGuideHandler : MonoBehaviour
     {
-        axisGuide = Instantiate(axisGuidePrefab);
+        [SerializeField] GameObject axisGuidePrefab;
+        GameObject axisGuide;
+        Transform axisTarget;
 
-        pageController = GetComponent<PRSPageController>();
-        (pageController.pageDic[PageState.Control] as ControlPage).onChangeControlOption += ((ControlOption option) =>
+        PRSPageController pageController;
+
+        bool isAttached;
+        bool isLocal;
+
+        private void Create()
         {
-            isLocal = option.HasFlag(ControlOption.Option_Local);
-        });
-    }
+            axisGuide = Instantiate(axisGuidePrefab);
 
-    public void Activate(bool isActive)
-    {
-        if (axisGuide == null)
-            Create();
-
-        axisGuide.SetActive(isActive);
-    }
-
-    public void Attach(Transform target)
-    {
-        axisTarget = target;
-
-        axisGuide.transform.SetParent(axisTarget);
-        axisGuide.transform.localPosition = Vector3.zero;
-
-        isAttached = true;
-    }
-
-    private void Update()
-    {
-        if (axisTarget == null || !axisTarget.gameObject.activeInHierarchy)
-        {
-            isAttached = false;
-            return;
+            pageController = GetComponent<PRSPageController>();
+            (pageController.pageDic[PageState.Control] as ControlPage).onChangeControlOption += ((ControlOption option) =>
+            {
+                isLocal = option.HasFlag(ControlOption.Option_Local);
+            });
         }
 
-        if (!isAttached)
-            return;
+        public void Activate(bool isActive)
+        {
+            if (axisGuide == null)
+                Create();
 
-        if (isLocal)
-            axisGuide.transform.localRotation = Quaternion.identity;
-        else
-            axisGuide.transform.forward = Vector3.forward;
+            axisGuide.SetActive(isActive);
+        }
+
+        public void Attach(Transform target)
+        {
+            axisTarget = target;
+
+            axisGuide.transform.SetParent(axisTarget);
+            axisGuide.transform.localPosition = Vector3.zero;
+
+            isAttached = true;
+        }
+
+        private void Update()
+        {
+            if (axisTarget == null || !axisTarget.gameObject.activeInHierarchy)
+            {
+                isAttached = false;
+                return;
+            }
+
+            if (!isAttached)
+                return;
+
+            if (isLocal)
+                axisGuide.transform.localRotation = Quaternion.identity;
+            else
+                axisGuide.transform.forward = Vector3.forward;
+        }
     }
 }

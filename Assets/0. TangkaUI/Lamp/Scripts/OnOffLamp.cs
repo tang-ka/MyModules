@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PRSController
+namespace TangkaUI
 {
     public class OnOffLamp : Lamp
     {
+        [Header("Options")]
         public bool isOn;
+
         private Color onColor = Color.blue;
         private Color offColor = Color.red;
 
@@ -26,12 +28,8 @@ namespace PRSController
 
         private void ActivateBulb(bool _isOn)
         {
-            if (_isOn)
-                bulb.color = onColor;
-            else
-                bulb.color = offColor;
-
             isOn = _isOn;
+            bulb.color = isOn ? onColor : offColor;
         }
 
         protected void SetLampColor(Color onColor, Color OffColor)
@@ -39,5 +37,6 @@ namespace PRSController
             this.onColor = onColor;
             this.offColor = OffColor;
         }
+        
     } 
 }

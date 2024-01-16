@@ -62,7 +62,6 @@ namespace PRSController
 
         protected async void SlideMove(RectTransform entity, Vector2 targetPosition, CancellationToken cancellationToken)
         {
-
             await UniTask.WaitUntil(() =>
             {
                 try
