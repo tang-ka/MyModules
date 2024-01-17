@@ -1,4 +1,5 @@
 using PRSController;
+using UnityEngine;
 
 namespace PRSController
 {
@@ -31,7 +32,6 @@ namespace PRSController
         //	this.isLocal = isLocal;
         //}
 
-        public abstract void ControlMethod(ControlButton button);
+        public abstract void ControlMethod(Vector3 dir);
 	}
-
 }

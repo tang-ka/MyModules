@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICommand
+namespace PRSController
 {
-    public void Excute() { }
+	public interface ICommand
+	{
+		public void Excute();
+	} 
 }

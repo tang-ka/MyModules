@@ -39,7 +39,39 @@ namespace PRSController
 
         public void Control(ControlButton btn)
         {
-            controlStrategy.ControlMethod(btn);
+            Vector3 direction = Vector3.zero;
+
+            switch (btn)
+            {
+                case ControlButton.X_MINUS:
+                    direction = Vector3.left;
+                    break;
+
+                case ControlButton.X_PLUS:
+                    direction = Vector3.right;
+                    break;
+
+                case ControlButton.Y_MINUS:
+                    direction = Vector3.down;
+                    break;
+
+                case ControlButton.Y_PLUS:
+                    direction = Vector3.up;
+                    break;
+
+                case ControlButton.Z_MINUS:
+                    direction = Vector3.back;
+                    break;
+
+                case ControlButton.Z_PLUS:
+                    direction = Vector3.forward;
+                    break;
+
+                default:
+                    break;
+            }
+
+            controlStrategy.ControlMethod(direction);
         }
 
         void SetControlOption(ControlOption option)

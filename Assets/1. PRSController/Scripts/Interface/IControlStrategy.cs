@@ -7,6 +7,6 @@ namespace PRSController
 {
     public interface IControlStrategy
     {
-        void ControlMethod(ControlButton button);
+        void ControlMethod(Vector3 dir);
     } 
 }

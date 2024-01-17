@@ -20,6 +20,7 @@ namespace PRSController
         None = 0,
         Option_Local        = 1 << 0,
         Option_Constrained  = 1 << 1,
+        Option_td = 1 << 2
     }
 
     public class ControlPage : Page
@@ -51,9 +52,7 @@ namespace PRSController
                 controlOption ^= value;
                 onChangeControlOption?.Invoke(controlOption);
             }
-
         }
-
         public Action<ControlOption> onChangeControlOption;
 
         //public bool isContrained;
