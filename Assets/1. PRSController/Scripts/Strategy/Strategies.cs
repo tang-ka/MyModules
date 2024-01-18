@@ -4,10 +4,18 @@ namespace PRSController
 {
     public class PositionStrategy : ControlStrategy
     {
-        public PositionStrategy(PRSData data, ControlOption option) : base(data, option) { }
+        public PositionStrategy(CommandHandler handler, PRSData data, ControlOption option) : base(handler, data, option) { }
 
         public override void ControlMethod(Vector3 dir)
         {
+            commandHandler.RequestCommand(new PositionControlCommand(
+                new ControlCommand.ControlInfo(
+                data.TargetObject,
+                option,
+                dir,
+                data.DifferentialInterval
+                )));
+            
             if (option.HasFlag(ControlOption.Option_Local))
                 data.TargetObject.Translate(data.DifferentialInterval * dir, Space.Self);
             else
@@ -17,7 +25,7 @@ namespace PRSController
 
     public class RotationStrategy : ControlStrategy
     {
-        public RotationStrategy(PRSData data, ControlOption option) : base(data, option) { }
+        public RotationStrategy(CommandHandler handler, PRSData data, ControlOption option) : base(handler, data, option) { }
 
         public override void ControlMethod(Vector3 dir)
         {
@@ -42,7 +50,7 @@ namespace PRSController
 
     public class ScaleStrategy : ControlStrategy
     {
-        public ScaleStrategy(PRSData data, ControlOption option) : base(data, option) { }
+        public ScaleStrategy(CommandHandler handler, PRSData data, ControlOption option) : base(handler, data, option) { }
 
         public override void ControlMethod(Vector3 dir)
         {

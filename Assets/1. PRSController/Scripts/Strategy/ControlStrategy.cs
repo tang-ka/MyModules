@@ -5,6 +5,7 @@ namespace PRSController
 {
     public abstract class ControlStrategy : IControlStrategy
     {
+        protected CommandHandler commandHandler;
         protected PRSData data;
         //protected bool isLocal;
         protected ControlOption option;
@@ -14,8 +15,9 @@ namespace PRSController
             set => option = value; 
         }
 
-    public ControlStrategy(PRSData data, ControlOption option)
+        public ControlStrategy(CommandHandler handler, PRSData data, ControlOption option)
         {
+            commandHandler = handler;
             this.data = data;
             this.option = option;
         }

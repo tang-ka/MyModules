@@ -38,7 +38,7 @@ namespace PRSController
             set 
             { 
                 controlMode = value;
-                ControlModeSetting();
+                ControlModeSetting(controlMode);
                 onChangeControlMode?.Invoke(controlMode);
             }
         }
@@ -80,11 +80,11 @@ namespace PRSController
             ControlMode = ControlMode.None;
         }
 
-        void ControlModeSetting()
+        void ControlModeSetting(ControlMode mode)
         {
             PRSPageController parent = parentController as PRSPageController;
 
-            switch (ControlMode)
+            switch (mode)
             {
                 case ControlMode.None:
                     controlPanel.ControlStrategy = null;
