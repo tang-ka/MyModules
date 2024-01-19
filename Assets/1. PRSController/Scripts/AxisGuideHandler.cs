@@ -13,6 +13,11 @@ namespace PRSController
         bool isAttached;
         bool isLocal;
 
+        private void OnDestroy()
+        {
+            Destroy(axisGuide);
+        }
+
         private void Create()
         {
             axisGuide = Instantiate(axisGuidePrefab);
@@ -24,12 +29,17 @@ namespace PRSController
             });
         }
 
-        public void Activate(bool isActive)
+        public void Activate(bool activate)
         {
             if (axisGuide == null)
-                Create();
+            {
+                if (activate)
+                    Create();
+                else
+                    return;
+            }
 
-            axisGuide.SetActive(isActive);
+            axisGuide.SetActive(activate);
         }
 
         public void Attach(Transform target)

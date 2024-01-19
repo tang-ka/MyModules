@@ -77,7 +77,8 @@ namespace PRSController
         public void CloseSetting()
         {
             data = new PRSData();
-            axisGuideHandler?.Activate(false);
+
+                axisGuideHandler?.Activate(false);
         }
 
         // 최초 한번만 설정하면 그 이후에는 설정 할 필요가 없는 설정들
@@ -116,6 +117,7 @@ namespace PRSController
         {
             pageDic.Clear();
             data = null;
+            axisGuideHandler = null;
 
             isInit = false;
         }
@@ -138,8 +140,8 @@ namespace PRSController
         public void SetTargetObject(Transform target)
         {
             data.TargetObject = target;
-            axisGuideHandler.Attach(target);
             axisGuideHandler.Activate(true);
+            axisGuideHandler.Attach(target);
             onSetTarget?.Invoke(target);
         }
 

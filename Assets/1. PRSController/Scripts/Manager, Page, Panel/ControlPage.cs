@@ -27,6 +27,7 @@ namespace PRSController
     {
         [SerializeField] XYZControlPanel controlPanel;
         [SerializeField] DifferentialIntervalPanel differnetialIntervalPanel;
+        [SerializeField] public CommandHandler commandHandler = new CommandHandler();
 
         public Action<ControlMode> onChangeControlMode;
 
@@ -83,6 +84,7 @@ namespace PRSController
         void ControlModeSetting(ControlMode mode)
         {
             PRSPageController parent = parentController as PRSPageController;
+            
 
             switch (mode)
             {
@@ -90,13 +92,13 @@ namespace PRSController
                     controlPanel.ControlStrategy = null;
                     break;
                 case ControlMode.Move:
-                    controlPanel.ControlStrategy = new PositionStrategy(parent.data, ControlOption);
+                    controlPanel.ControlStrategy = new PositionStrategy(commandHandler, parent.data, ControlOption);
                     break;
                 case ControlMode.Rotate:
-                    controlPanel.ControlStrategy = new RotationStrategy(parent.data, ControlOption);
+                    controlPanel.ControlStrategy = new RotationStrategy(commandHandler, parent.data, ControlOption);
                     break;
                 case ControlMode.Scale:
-                    controlPanel.ControlStrategy = new ScaleStrategy(parent.data, ControlOption);
+                    controlPanel.ControlStrategy = new ScaleStrategy(commandHandler, parent.data, ControlOption);
                     break;
                 default:
                     break;
