@@ -91,7 +91,7 @@ namespace PRSController
                 dialValue += (totalDelta / Mathf.Abs(totalDelta)) * 30;
                 totalDelta %= 30;
 
-                dialValue = Mathf.Clamp(dialValue, 0, 3600);
+                dialValue = Mathf.Clamp(dialValue, 0, float.PositiveInfinity);
 
                 float tempDialValue = dialValue % 360;
                 float z = 0;
@@ -104,6 +104,7 @@ namespace PRSController
                 fill.fillAmount = dialValue / 360;
 
                 intervalValue += (totalDelta / Mathf.Abs(totalDelta)) * UNIT_VALUE;
+                intervalValue = Mathf.Clamp(intervalValue, 0.01f, float.PositiveInfinity);
                 UpdateDifferentialInterval(intervalValue);
             }
 

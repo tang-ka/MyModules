@@ -787,7 +787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468e553ef4bfa2e42b73980f3273778a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPage: {fileID: 0}
   btnUndo: {fileID: 8799451488139226473}
   btnRedo: {fileID: 4598013949619957748}
 --- !u!1 &1666432742448482802
@@ -4177,7 +4176,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0.001
+  m_Text: 0.01
 --- !u!114 &7944855395638814394
 MonoBehaviour:
   m_ObjectHideFlags: 0
