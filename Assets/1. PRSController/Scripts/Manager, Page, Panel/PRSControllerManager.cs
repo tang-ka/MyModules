@@ -35,8 +35,7 @@ namespace PRSController
 
             if (PRSController.isActiveAndEnabled)
             {
-                Refresh();
-                PRSController.SetTargetObject(target);
+                Refresh(target);
                 return;
             }
 
@@ -61,15 +60,19 @@ namespace PRSController
             PRSController.gameObject.SetActive(false);
         }
 
-        public async void Refresh()
+        public async void Refresh(Transform target = null, bool doAnimate = true)
         {
-            var panels = PRSController.pageDic[PRSController.PageState].panels;
+            PRSController.SetTargetObject(target);
 
-            foreach (var panel in panels)
+            if (doAnimate)
             {
-                panel.gameObject.SetActive(false);
-                await UniTask.Delay(50);
-                panel.gameObject.SetActive(true);
+                var panels = PRSController.pageDic[PRSController.PageState].panels;
+                foreach (var panel in panels)
+                {
+                    panel.gameObject.SetActive(false);
+                    await UniTask.Delay(50);
+                    panel.gameObject.SetActive(true);
+                }
             }
         }
     } 

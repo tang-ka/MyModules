@@ -1,4 +1,5 @@
 using Lean.Touch;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -49,7 +50,7 @@ namespace PRSController
 
         private void UpdateDifferentialInterval(float intervalValue)
         {
-            data.DifferentialInterval = intervalValue;
+            data.DifferentialInterval = (float)Math.Round(intervalValue, 3);
             txtInterval.text = string.Format("{0:0.00}", data.DifferentialInterval);
         }
 

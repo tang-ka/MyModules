@@ -58,27 +58,23 @@ namespace PRSController
             iconColor.Add(false, iconOffColor);
         }
 
-        protected override void ChangeUI(bool isOn)
+        public override void ChangeUI(bool isOn)
         {
-            base.ChangeUI(isOn);
-
             icon.color = iconColor[isOn];
             icon.sprite = iconSprite[isOn];
+
+            base.ChangeUI(isOn);
         }
 
         public override void Interactable(bool isInteractable)
         {
-            base.Interactable(isInteractable);
-
-            if (isInteractable)
-            {
-
-            }
-            else
-            {
+            if (!isInteractable)
+            { 
                 icon.color *= new Color(1, 1, 1, 0);
                 icon.color += new Color(0, 0, 0, 0.3f);
             }
+
+            base.Interactable(isInteractable);
         }
     }
 }

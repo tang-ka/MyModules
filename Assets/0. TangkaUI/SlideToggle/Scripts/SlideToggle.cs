@@ -79,7 +79,6 @@ namespace PRSController
                 }
                 catch (OperationCanceledException)
                 {
-                    //Debug.Log($"{transform.name} - {entity.gameObject.name}");
                     return true;
                 }
 
@@ -100,20 +99,17 @@ namespace PRSController
             handleColor[false] = hdlOFF;
         }
 
-        protected virtual void ChangeUI(bool isOn)
+        public virtual void ChangeUI(bool isOn)
         {
             background.color = backgroundColor[isOn];
             handle.color = handleColor[isOn];
+
+            Interactable(toggle.IsInteractable());
         }
 
         public virtual void Interactable(bool isInteractable)
         {
-            toggle.interactable = isInteractable;
-            if (isInteractable)
-            {
-                ChangeUI(toggle.isOn);
-            }
-            else
+            if (!isInteractable)
             {
                 background.color *= new Color(1, 1, 1, 0);
                 background.color += new Color(0, 0, 0, 0.3f);

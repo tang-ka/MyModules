@@ -7,29 +7,6 @@ namespace PRSController
 {
     public abstract class ControlCommand : ICommand
     {
-        //public class ControlInfo
-        //{
-        //    public  Transform        target;
-        //    public  ControlOption    option;
-        //    public  Vector3          direction;
-        //    public  float            magnitude;
-
-        //    public ControlInfo(Transform tf, ControlOption co, Vector3 dir, float mag)
-        //    {
-        //        target = tf;
-        //        option = co;
-        //        direction = dir;
-        //        magnitude = mag;
-        //    }
-        //}
-
-        //protected ControlInfo info;
-
-        //public ControlCommand(ControlInfo info)
-        //{
-        //    this.info = info;
-        //}
-
         protected Transform target;
         protected ControlOption option;
         protected Vector3 direction;
@@ -53,14 +30,24 @@ namespace PRSController
             return this.GetType().Name;
         }
 
-        public virtual string GetMagnitude()
+        public virtual Transform GetTarget()
         {
-            return magnitude.ToString();
+            return target;
         }
 
-        public virtual string GetDirection()
+        public virtual ControlOption GetOption()
         {
-            return direction.ToString();
+            return option;
+        }
+
+        public virtual float GetMagnitude()
+        {
+            return magnitude;
+        }
+
+        public virtual Vector3 GetDirection()
+        {
+            return direction;
         }
     } 
 }

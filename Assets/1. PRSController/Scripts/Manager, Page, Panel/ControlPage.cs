@@ -27,7 +27,7 @@ namespace PRSController
     {
         [SerializeField] XYZControlPanel controlPanel;
         [SerializeField] DifferentialIntervalPanel differnetialIntervalPanel;
-        [SerializeField] public CommandHandler commandHandler = new CommandHandler();
+        [SerializeField] public CommandHandler commandHandler;
 
         public Action<ControlMode> onChangeControlMode;
 
@@ -73,6 +73,10 @@ namespace PRSController
         {
             base.Init();
 
+            var optionPanel = panels.Find((panel) => panel.gameObject.name.Equals("OptionPanel"));
+
+            commandHandler = new CommandHandler(optionPanel, 30);
+
             differnetialIntervalPanel.SetData(ref (parentController as PRSPageController).data);
         }
 
@@ -84,7 +88,6 @@ namespace PRSController
         void ControlModeSetting(ControlMode mode)
         {
             PRSPageController parent = parentController as PRSPageController;
-            
 
             switch (mode)
             {
