@@ -79,6 +79,7 @@ namespace PRSController
         Vector2 preTouchVector;
         Vector2 curTouchVector;
         float totalDelta;
+
         private void DialMove(LeanFinger finger)
         {
             curTouchVector = (finger.ScreenPosition - dialHandlePosition).normalized;
