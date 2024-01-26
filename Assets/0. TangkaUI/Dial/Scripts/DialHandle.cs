@@ -38,7 +38,7 @@ namespace TangkaUI
 
         public Action<int> receiveHandleValue;
 
-        [SerializeField] bool useNegative = false;
+        [SerializeField] public bool useNegative = false;
 
         RectTransform rectTransform;
         LayerMask handleLayer;
@@ -68,14 +68,14 @@ namespace TangkaUI
             var canvas = GetComponentInParent<Canvas>();
             gRaycaster = canvas.GetComponent<GraphicRaycaster>();
             eventData = new PointerEventData(null);
+
+            HandleValue = 0;
         }
 
         private void OnEnable()
         {
             LeanTouch.OnFingerDown += DialStart;
             LeanTouch.OnFingerUp += DialFinish;
-
-            HandleValue = 0;
         }
 
         private void OnDisable()

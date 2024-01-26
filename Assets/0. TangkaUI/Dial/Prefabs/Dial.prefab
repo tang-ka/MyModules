@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 4018222509774486782}
   - component: {fileID: 7102250027691179537}
   m_Layer: 8
-  m_Name: txtChangeAmount
+  m_Name: DisplayDialValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
   dialValue: 0
   unit: 0.01
   handleLayerName: DialHandle
-  displayDialValue: {fileID: 0}
+  displayDialValue: {fileID: 4018222509774486782}
 --- !u!1 &9036153884273975482
 GameObject:
   m_ObjectHideFlags: 0

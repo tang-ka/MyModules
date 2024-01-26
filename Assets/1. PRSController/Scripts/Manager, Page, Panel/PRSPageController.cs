@@ -76,9 +76,7 @@ namespace PRSController
 
         public void CloseSetting()
         {
-            data = new PRSData();
-
-                axisGuideHandler?.Activate(false);
+            axisGuideHandler?.Activate(false);
         }
 
         // 최초 한번만 설정하면 그 이후에는 설정 할 필요가 없는 설정들

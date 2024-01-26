@@ -10,6 +10,7 @@ namespace TangkaUI
     public class Dial : MonoBehaviour
     {
         [SerializeField] DialHandle handle;
+        public DialHandle Handle { get => handle; }
 
         [SerializeField] float dialValue;
         public float DialValue
@@ -30,15 +31,13 @@ namespace TangkaUI
 
         private void Awake()
         {
-            handle.Init(handleLayerName);
             handle.receiveHandleValue += ((value) =>
             {
-                DialValue = (value) * unit;
-                DialValue = (float)Math.Round(DialValue, 3);
+                dialValue = (value) * unit;
+                DialValue = (float)Math.Round(dialValue, 3);
             });
+            handle.Init(handleLayerName);
         }
-
-
 
         private void UpdateDisplay(float vlaue)
         {

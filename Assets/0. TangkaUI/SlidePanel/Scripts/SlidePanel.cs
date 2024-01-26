@@ -15,7 +15,7 @@ namespace SlidePanel
         #region Members
         [Header("Components")]
         [SerializeField] protected Toggle toggle;
-        [SerializeField] protected Transform toggleIcon;
+        [SerializeField] protected RectTransform toggleIcon;
         [SerializeField] protected RectTransform window;
         protected RectTransform rectTransform;
 
@@ -86,6 +86,7 @@ namespace SlidePanel
             var goalPosition = isOpen ? openPosition : closePosition;
 
             SlideMove(goalPosition, animationToken);
+            IconChange(isOpen);
         }
 
         private async void SlideMove(Vector2 goalPosition, CancellationToken slideMoveToken)
