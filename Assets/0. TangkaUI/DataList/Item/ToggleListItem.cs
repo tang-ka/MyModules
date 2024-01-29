@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace TangkaUI
 {
+    [RequireComponent(typeof(Toggle))]
     public class ToggleListItem<T> : ListItem<T>
     {
         protected Toggle toggle;
@@ -14,6 +15,7 @@ namespace TangkaUI
 
         protected virtual void Start()
         {
+            // Set toggle
             toggle = GetComponent<Toggle>();
             toggle.group = transform.GetComponentInParent<ToggleGroup>();
             toggle.onValueChanged.RemoveAllListeners();

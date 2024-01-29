@@ -8,6 +8,13 @@ namespace TangkaUI
     [RequireComponent(typeof(ToggleGroup))]
     public class ToggleListPanel<T, W> : DataListPanel<T, W> where T : ListItem<W>
     {
+        protected ToggleGroup group;
+        protected virtual void Awake()
+        {
+            group = GetComponent<ToggleGroup>();
+            group.allowSwitchOff = true;
+        }
+
         protected override bool ContainItem(W data)
         {
             throw new System.NotImplementedException();

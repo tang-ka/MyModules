@@ -16,10 +16,10 @@ namespace TangkaUI
     /// <typeparam name="W"></typeparam>
     public abstract class DataListPanel<T, W> : Panel where T : ListItem<W>
     {
-        [SerializeField] protected GameObject scrollRect;
-        
         [SerializeField] GameObject itemPrefab;
-        protected List<T> items = new List<T>();
+        protected List<T> itemList = new List<T>();
+        
+        [SerializeField] protected Transform content;
 
         protected virtual void SetItems(List<W> datas)
         {
@@ -38,21 +38,41 @@ namespace TangkaUI
                 item = Get(data);
             else
             {
-                var gameObj = Instantiate(itemPrefab, scrollRect.transform);
+                var gameObj = Instantiate(itemPrefab, content);
                 item = gameObj.GetComponent<T>();
-                items.Add(item);
+                itemList.Add(item);
             }
 
             item.Set(data);
             item.GetComponent<RectTransform>().localScale = Vector3.one;
             item.gameObject.SetActive(true);
         }
+        
+        protected virtual void ClearList() 
+        {
+            itemList.RemoveAll((item) => item == null);
+
+            for (int i = 0; i < itemList.Count; i++)
+                Destroy(itemList[i].gameObject);
+        }
+
+        protected virtual void OpenList() 
+        {
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                itemList[i].gameObject.SetActive(true);
+            }
+        }
+
+        protected virtual void CloseList() 
+        {
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                itemList[i].gameObject.SetActive(false);
+            }
+        }
 
         protected abstract bool ContainItem(W data);
         protected abstract T Get(W data);
-
-        protected virtual void RemoveAll() { }
-        protected virtual void OpenList() { }
-        protected virtual void CloseList() { }
     } 
 }

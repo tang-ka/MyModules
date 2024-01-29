@@ -5,7 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PRSController
+namespace TangkaUI
 {
     [RequireComponent(typeof(Toggle))]
     public class SlideToggle : MonoBehaviour
