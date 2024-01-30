@@ -84,7 +84,6 @@ namespace TangkaUI
 
                 return false;
             });
-
         }
 
         protected void SetOnColor(Color bgON, Color hdlON)

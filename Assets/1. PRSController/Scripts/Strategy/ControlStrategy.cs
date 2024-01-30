@@ -35,5 +35,5 @@ namespace PRSController
         //}
 
         public abstract void ControlMethod(Vector3 dir);
-	}
+    }
 }

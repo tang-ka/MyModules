@@ -8,5 +8,5 @@ namespace PRSController
     public interface IControlStrategy
     {
         void ControlMethod(Vector3 dir);
-    } 
+    }
 }
