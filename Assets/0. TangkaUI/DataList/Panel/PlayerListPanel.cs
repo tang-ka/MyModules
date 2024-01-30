@@ -22,7 +22,7 @@ namespace TangkaUI
 
             tglVisible.toggle.onValueChanged.AddListener(ChangeVisible);
 
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 200; i++)
                 playerList.Add(new PlayerData(i));
 
             SetItems(playerList);
@@ -41,10 +41,7 @@ namespace TangkaUI
         private void ChangeVisible(bool isOn)
         {
             if (fadeToken.CanBeCanceled)
-            {
                 fadeTokenSource.Cancel();
-                print("Try Cancel");
-            }                
 
             fadeTokenSource = new CancellationTokenSource();
             fadeToken = fadeTokenSource.Token;
@@ -58,19 +55,13 @@ namespace TangkaUI
         protected override void OpenList()
         {
             for (int i = 0; i < itemList.Count; i++)
-            {
                 itemList[i].Open(fadeToken);
-            }
-            print("Operate to Open Complete");
         }
 
         protected override void CloseList()
         {
             for (int i = 0; i < itemList.Count; i++)
-            {
                 itemList[i].Close(fadeToken);
-            }
-            print("Operate to Close Complete");
         }
     }
 }

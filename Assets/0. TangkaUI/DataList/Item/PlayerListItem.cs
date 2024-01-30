@@ -1,12 +1,9 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace TangkaUI
@@ -84,9 +81,6 @@ namespace TangkaUI
         {
             await UniTask.WaitUntil(() =>
                 {
-                    if (token.IsCancellationRequested)
-                        return true;
-
                     for (int i = 0; i < texts.Count; i++)
                     {
                         var txtClr = texts[i].color;
@@ -110,8 +104,6 @@ namespace TangkaUI
                     }
                     return false;
                 }, cancellationToken: token);
-
-            print("Close Complete");
         }
 
         public async UniTaskVoid FadeIn(CancellationToken token = default)
@@ -120,9 +112,6 @@ namespace TangkaUI
 
             await UniTask.WaitUntil(() =>
                 {
-                    if (token.IsCancellationRequested)
-                        return true;
-
                     bool isAllFinish = true;
 
                     for (int i = 0; i < texts.Count; i++)
@@ -158,8 +147,6 @@ namespace TangkaUI
 
                     return false;
                 }, cancellationToken: token);
-            
-            print("Open Complete");
         }
     }
 }
