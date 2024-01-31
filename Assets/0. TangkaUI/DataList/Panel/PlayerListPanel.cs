@@ -10,6 +10,7 @@ namespace TangkaUI
     public class PlayerListPanel : ToggleListPanel<PlayerListItem, PlayerData>
     {
         [SerializeField] SlideToggle tglVisible;
+        [SerializeField] RectTransform viewport;
 
         List<PlayerData> playerList = new List<PlayerData>();
 
@@ -22,7 +23,7 @@ namespace TangkaUI
 
             tglVisible.toggle.onValueChanged.AddListener(ChangeVisible);
 
-            for (int i = 1; i <= 200; i++)
+            for (int i = 1; i <= 50; i++)
                 playerList.Add(new PlayerData(i));
 
             SetItems(playerList);
@@ -62,6 +63,12 @@ namespace TangkaUI
         {
             for (int i = 0; i < itemList.Count; i++)
                 itemList[i].Close(fadeToken);
+        }
+
+        private void Culling(Vector2 viewPortPosition)
+        {
+            // rect가 겹치는지 검사하고 안겹치면 애니메이션 없이 바로 꺼버리자
+            viewport.rect.Overlaps(new Rect());
         }
     }
 }

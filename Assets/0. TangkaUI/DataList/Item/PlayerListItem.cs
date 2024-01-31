@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,8 +27,8 @@ namespace TangkaUI
         [SerializeField] List<Image> images = new List<Image>();
         [SerializeField] List<Color> txtDefaultColor = new List<Color>();
         [SerializeField] List<Color> imgDefaultAlpha = new List<Color>();
-        float fadeOutSpeed = 40;
-        float fadeInSpeed = 20;
+        float fadeOutSpeed = 25;
+        float fadeInSpeed = 18;
 
         //Dictionary<Text, Color> textDic = new Dictionary<Text, Color>();
         //Dictionary<Image, Color> imageDic = new Dictionary<Image, Color>();
@@ -97,11 +99,12 @@ namespace TangkaUI
                         images[i].color = Vector4.Lerp(imgClr, closeClr, Time.deltaTime * fadeOutSpeed);
                     }
 
-                    if (texts[0].color.a < 0.01f)
+                    if (texts[0].color.a < 0.001f)
                     {
                         gameObject.SetActive(false);
                         return true;
                     }
+
                     return false;
                 }, cancellationToken: token);
         }
@@ -150,3 +153,4 @@ namespace TangkaUI
         }
     }
 }
+

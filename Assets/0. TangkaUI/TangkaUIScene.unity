@@ -1841,6 +1841,7 @@ MonoBehaviour:
     type: 3}
   content: {fileID: 638130567}
   tglVisible: {fileID: 763921554081982600}
+  viewport: {fileID: 2102203931}
 --- !u!114 &1447551772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1917,10 +1918,10 @@ MonoBehaviour:
   m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
-  m_Elasticity: 0.1
+  m_Elasticity: 0.05
   m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_DecelerationRate: 0.1
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 2102203931}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1301859014}
