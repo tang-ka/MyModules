@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +18,22 @@ namespace TangkaUI
 
         CancellationTokenSource fadeTokenSource;
         CancellationToken fadeToken;
+
+        public Rect ViewportWorldRect
+        {
+            get
+            {
+                var localRect = viewport.rect;
+
+                return new Rect
+                {
+                    min = viewport.TransformPoint(localRect.min),
+                    max = viewport.TransformPoint(localRect.max)
+                };
+            }
+        }
+
+        List<PlayerListItem> itemsOnViewport = new List<PlayerListItem>();
 
         protected override void Awake()
         {
@@ -47,28 +65,49 @@ namespace TangkaUI
             fadeTokenSource = new CancellationTokenSource();
             fadeToken = fadeTokenSource.Token;
 
-            if (isOn)
-                CloseList();
-            else
-                OpenList();
+            SetVisibleItemsOnViewport(!isOn);
         }
 
-        protected override void OpenList()
+        public void CullingMaskedItem()
         {
+            itemsOnViewport.Clear();
+
             for (int i = 0; i < itemList.Count; i++)
-                itemList[i].Open(fadeToken);
+            { 
+                if (IsOverViewport(itemList[i].WorldRect))
+                    itemsOnViewport.Add(itemList[i]);
+            }
         }
 
-        protected override void CloseList()
+        private void SetVisibleItemsOnViewport(bool isVisible)
         {
-            for (int i = 0; i < itemList.Count; i++)
-                itemList[i].Close(fadeToken);
+            CullingMaskedItem();
+
+            if (isVisible)
+            {
+                content.gameObject.SetActive(true);
+            }
+
+            int taskProgress = 0;
+            for (int i = 0; i < itemsOnViewport.Count; i++)
+            {
+                var awaiter = itemsOnViewport[i].SetVisible(isVisible, fadeToken).GetAwaiter();
+
+                if (!isVisible)
+                {
+                    awaiter.OnCompleted(() =>
+                        {
+                            taskProgress++;
+                            if (taskProgress == itemsOnViewport.Count)
+                                content.gameObject.SetActive(false);
+                        });
+                }
+            }
         }
 
-        private void Culling(Vector2 viewPortPosition)
+        private bool IsOverViewport(Rect rect)
         {
-            // rect가 겹치는지 검사하고 안겹치면 애니메이션 없이 바로 꺼버리자
-            viewport.rect.Overlaps(new Rect());
+            return ViewportWorldRect.Overlaps(rect);
         }
     }
 }

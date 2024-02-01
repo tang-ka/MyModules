@@ -27,8 +27,23 @@ namespace TangkaUI
         [SerializeField] List<Image> images = new List<Image>();
         [SerializeField] List<Color> txtDefaultColor = new List<Color>();
         [SerializeField] List<Color> imgDefaultAlpha = new List<Color>();
-        float fadeOutSpeed = 25;
-        float fadeInSpeed = 18;
+        float fadeOutSpeed = 20;
+        float fadeInSpeed = 8;
+
+        public RectTransform rectTransform;
+        public Rect WorldRect
+        {
+            get
+            {
+                var localRect = rectTransform.rect;
+
+                return new Rect
+                {
+                    min = rectTransform.TransformPoint(localRect.min),
+                    max = rectTransform.TransformPoint(localRect.max)
+                };
+            }
+        }
 
         //Dictionary<Text, Color> textDic = new Dictionary<Text, Color>();
         //Dictionary<Image, Color> imageDic = new Dictionary<Image, Color>();
@@ -49,6 +64,8 @@ namespace TangkaUI
 
             //for (int i = 0; i < images.Length; i++)
             //    imageDic.Add(images[i], images[i].color);
+
+            rectTransform = transform.GetComponent<RectTransform>(); 
         }
 
         public override void Set(PlayerData data)
@@ -69,17 +86,15 @@ namespace TangkaUI
             LUK.text = data.LUK.ToString();
         }
 
-        public void Open(CancellationToken token = default)
+        public async UniTask SetVisible(bool isVisible, CancellationToken token = default)
         {
-            FadeIn(token).Forget();
+            if (isVisible)
+                await FadeIn(token);
+            else
+                await FadeOut(token);
         }
 
-        public void Close(CancellationToken token = default)
-        {
-            FadeOut(token).Forget();
-        }
-
-        public async UniTaskVoid FadeOut(CancellationToken token = default)
+        public async UniTask FadeOut(CancellationToken token = default)
         {
             await UniTask.WaitUntil(() =>
                 {
@@ -101,7 +116,7 @@ namespace TangkaUI
 
                     if (texts[0].color.a < 0.001f)
                     {
-                        gameObject.SetActive(false);
+                        //gameObject.SetActive(false);
                         return true;
                     }
 
@@ -109,9 +124,9 @@ namespace TangkaUI
                 }, cancellationToken: token);
         }
 
-        public async UniTaskVoid FadeIn(CancellationToken token = default)
+        public async UniTask FadeIn(CancellationToken token = default)
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
 
             await UniTask.WaitUntil(() =>
                 {

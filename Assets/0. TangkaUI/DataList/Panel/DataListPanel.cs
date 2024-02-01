@@ -58,18 +58,12 @@ namespace TangkaUI
 
         protected virtual void OpenList() 
         {
-            for (int i = 0; i < itemList.Count; i++)
-            {
-                itemList[i].gameObject.SetActive(true);
-            }
+            content.gameObject.SetActive(true);
         }
 
         protected virtual void CloseList() 
         {
-            for (int i = 0; i < itemList.Count; i++)
-            {
-                itemList[i].gameObject.SetActive(false);
-            }
+            content.gameObject.SetActive(false);
         }
 
         protected abstract bool ContainItem(W data);
