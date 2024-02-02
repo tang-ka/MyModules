@@ -1839,6 +1839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7500170986889058005, guid: 27ecd2c91dedbbc45a62f57d720ebfc5,
     type: 3}
+  scrollRect: {fileID: 1704794631}
   content: {fileID: 638130567}
   tglVisible: {fileID: 763921554081982600}
   viewport: {fileID: 2102203931}

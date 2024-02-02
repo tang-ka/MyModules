@@ -81,13 +81,12 @@ namespace TangkaUI
 
         private void SetVisibleItemsOnViewport(bool isVisible)
         {
-            CullingMaskedItem();
+            scrollRect.enabled = isVisible;
 
             if (isVisible)
-            {
                 content.gameObject.SetActive(true);
-            }
 
+            CullingMaskedItem();
             int taskProgress = 0;
             for (int i = 0; i < itemsOnViewport.Count; i++)
             {

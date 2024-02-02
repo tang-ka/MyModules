@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 namespace TangkaUI
 {
@@ -18,8 +19,9 @@ namespace TangkaUI
     {
         [SerializeField] GameObject itemPrefab;
         protected List<T> itemList = new List<T>();
-        
-        [SerializeField] protected Transform content;
+
+        [SerializeField] protected ScrollRect scrollRect;
+        [SerializeField] protected RectTransform content;
 
         protected virtual void SetItems(List<W> datas)
         {
