@@ -41,7 +41,7 @@ namespace TangkaUI
 
             tglVisible.toggle.onValueChanged.AddListener(ChangeVisible);
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 200; i++)
                 playerList.Add(new PlayerData(i));
 
             SetItems(playerList);
@@ -83,30 +83,32 @@ namespace TangkaUI
         {
             scrollRect.enabled = isVisible;
 
-            if (isVisible)
-                content.gameObject.SetActive(true);
+            //if (isVisible)
+            //    content.gameObject.SetActive(true);
 
-            CullingMaskedItem();
-            int taskProgress = 0;
+            if (!isVisible)
+                CullingMaskedItem();
+
+            //int taskProgress = 0;
             for (int i = 0; i < itemsOnViewport.Count; i++)
             {
                 var awaiter = itemsOnViewport[i].SetVisible(isVisible, fadeToken).GetAwaiter();
 
-                if (!isVisible)
-                {
-                    awaiter.OnCompleted(() =>
-                        {
-                            taskProgress++;
-                            if (taskProgress == itemsOnViewport.Count)
-                                content.gameObject.SetActive(false);
-                        });
-                }
+                //if (!isVisible)
+                //{
+                //    awaiter.OnCompleted(() =>
+                //        {
+                //            taskProgress++;
+                //            //if (taskProgress == itemsOnViewport.Count)
+                //                //content.gameObject.SetActive(false);
+                //        });
+                //}
             }
         }
 
         private bool IsOverViewport(Rect rect)
         {
             return ViewportWorldRect.Overlaps(rect);
-        }
+        } 
     }
 }

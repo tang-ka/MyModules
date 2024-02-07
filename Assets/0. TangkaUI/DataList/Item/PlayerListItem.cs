@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.MaterialProperty;
 
 namespace TangkaUI
 {
@@ -28,7 +29,7 @@ namespace TangkaUI
         [SerializeField] List<Color> txtDefaultColor = new List<Color>();
         [SerializeField] List<Color> imgDefaultAlpha = new List<Color>();
         float fadeOutSpeed = 20;
-        float fadeInSpeed = 8;
+        float fadeInSpeed = 5;
 
         public RectTransform rectTransform;
         public Rect WorldRect
@@ -45,7 +46,7 @@ namespace TangkaUI
             }
         }
 
-        //Dictionary<Text, Color> textDic = new Dictionary<Text, Color>();
+        Dictionary<Text, Color> textDic = new Dictionary<Text, Color>();
         //Dictionary<Image, Color> imageDic = new Dictionary<Image, Color>();
 
         private void Awake()
@@ -89,7 +90,7 @@ namespace TangkaUI
         public async UniTask SetVisible(bool isVisible, CancellationToken token = default)
         {
             if (isVisible)
-                await FadeIn(token);
+                await FadeInBeta(token);
             else
                 await FadeOut(token);
         }
@@ -116,7 +117,7 @@ namespace TangkaUI
 
                     if (texts[0].color.a < 0.001f)
                     {
-                        //gameObject.SetActive(false);
+                        toggle.enabled = false;
                         return true;
                     }
 
@@ -124,10 +125,38 @@ namespace TangkaUI
                 }, cancellationToken: token);
         }
 
+        public async UniTask FadeInBeta(CancellationToken token = default)
+        {
+            await UniTask.WaitUntil(() =>
+            {
+                texts.ForEach((txt) =>
+                {
+                    var txtClr = txt.color;
+                    var openClr = txtDefaultColor[texts.IndexOf(txt)];
+
+                    txt.color = Vector4.Lerp(txtClr, openClr, Time.deltaTime * fadeInSpeed);
+                });
+
+                images.ForEach((img) =>
+                {
+                    var imgClr = img.color;
+                    var openClr = imgDefaultAlpha[images.IndexOf(img)];
+
+                    img.color = Vector4.Lerp(imgClr, openClr, Time.deltaTime * fadeInSpeed);
+                });
+
+                if (texts.TrueForAll((txt) => Mathf.Abs(txt.color.a - txtDefaultColor[texts.IndexOf(txt)].a) < 0.01f))
+                {
+                    toggle.enabled = true;
+                    return true;
+                }
+
+                return false;
+            }, cancellationToken: token);
+        }
+
         public async UniTask FadeIn(CancellationToken token = default)
         {
-            //gameObject.SetActive(true);
-
             await UniTask.WaitUntil(() =>
                 {
                     bool isAllFinish = true;
@@ -139,11 +168,12 @@ namespace TangkaUI
 
                         bool isFinish = MathF.Abs(txtClr.a - openClr.a) < 0.1f;
                         isAllFinish &= isFinish;
-
+                        
                         if (!isFinish)
                             texts[i].color = Vector4.Lerp(txtClr, openClr, Time.deltaTime * fadeInSpeed);
                         else
                             texts[i].color = openClr;
+
                     }
 
                     for (int i = 0; i < images.Count; i++)
