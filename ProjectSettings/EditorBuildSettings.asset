@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/URPDefault/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/3. SceneHandler/Scenes/ManagerScene.unity
+    guid: 692541b10db787245885ed404bb9a4c4
+  - enabled: 1
+    path: Assets/3. SceneHandler/Scenes/Scene_A.unity
+    guid: a329f61056d1eb144b49e633f653391d
+  - enabled: 1
+    path: Assets/3. SceneHandler/Scenes/Scene_B.unity
+    guid: d0c85286aeca5f14a93a2e963e55590a
+  - enabled: 1
+    path: Assets/3. SceneHandler/Scenes/Scene_C.unity
+    guid: d7c9886159d2cde419381ea3fff9db3b
+  - enabled: 1
+    path: Assets/3. SceneHandler/Scenes/Scene_D.unity
+    guid: ef4d6a303ef70c74ca4abfd29899ad72
   m_configObjects: {}
