@@ -18,7 +18,7 @@ public class ResourceManager : Singleton<ResourceManager>
     string customScenesFilePath;
     string directoryPath;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
 #if UNITY_EDITOR

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance;
 
@@ -26,7 +26,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
         }
     }
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         if (instance == null)
             instance = this as T;
