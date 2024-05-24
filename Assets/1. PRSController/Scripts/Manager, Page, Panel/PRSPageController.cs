@@ -120,6 +120,7 @@ namespace PRSController
             isInit = false;
         }
 
+        #region method : public
         public void OpenPage(PageState state, ControlMode mode = ControlMode.None)
         {
             if (mode != ControlMode.None)
@@ -141,7 +142,8 @@ namespace PRSController
             axisGuideHandler.Activate(true);
             axisGuideHandler.Attach(target);
             onSetTarget?.Invoke(target);
-        }
+        } 
+        #endregion
 
         private void SetBackgroundRectTransform(RectTransform page)
         {

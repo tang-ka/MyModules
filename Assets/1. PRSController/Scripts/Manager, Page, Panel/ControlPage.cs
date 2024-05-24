@@ -56,19 +56,6 @@ namespace PRSController
         }
         public Action<ControlOption> onChangeControlOption;
 
-        //public bool isContrained;
-        //private bool isLocal;
-        //public bool IsLocal
-        //{
-        //    get => isLocal;
-        //    set
-        //    {
-        //        isLocal = value;
-        //        onChangeControlOption?.Invoke(isLocal);
-        //    }
-        //}
-        //public Action<bool> onChangeControlOption;
-
         protected override void Init()
         {
             base.Init();

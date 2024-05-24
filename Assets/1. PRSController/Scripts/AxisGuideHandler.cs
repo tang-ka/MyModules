@@ -18,17 +18,6 @@ namespace PRSController
             Destroy(axisGuide);
         }
 
-        private void Create()
-        {
-            axisGuide = Instantiate(axisGuidePrefab);
-
-            pageController = GetComponent<PRSPageController>();
-            (pageController.pageDic[PageState.Control] as ControlPage).onChangeControlOption += ((ControlOption option) =>
-            {
-                isLocal = option.HasFlag(ControlOption.Option_Local);
-            });
-        }
-
         public void Activate(bool activate)
         {
             if (axisGuide == null)
@@ -50,6 +39,17 @@ namespace PRSController
             axisGuide.transform.localPosition = Vector3.zero;
 
             isAttached = true;
+        }
+
+        private void Create()
+        {
+            axisGuide = Instantiate(axisGuidePrefab);
+
+            pageController = GetComponent<PRSPageController>();
+            (pageController.pageDic[PageState.Control] as ControlPage).onChangeControlOption += ((ControlOption option) =>
+            {
+                isLocal = option.HasFlag(ControlOption.Option_Local);
+            });
         }
 
         private void Update()
